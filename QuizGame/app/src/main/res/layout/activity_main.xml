@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textScreen"
+        android:layout_marginTop="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Responde ahi bruja!"
+        android:textColor="#FFF"
+        android:textSize="22sp" />
+
+    <LinearLayout
+        android:layout_width="290dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/square"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_height="150dp">
+
+        <TextView
+            android:textAlignment="center"
+            android:id="@+id/textQuestion"
+            android:layout_width="220dp"
+            android:lineSpacingExtra="6dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="PROMOB IS?"
+            android:textColor="#0295C3"
+            android:textSize="26sp" />
+
+    </LinearLayout>
+
+   <LinearLayout
+       android:layout_width="400dp"
+       android:layout_height="150dp"
+       android:layout_gravity="center"
+       android:layout_marginTop="30dp"
+       android:gravity="center"
+       android:orientation="horizontal">
+
+      <EditText
+          android:id="@+id/editText"
+          android:layout_width="200dp"
+          android:layout_height="80dp"
+          android:layout_gravity="center"
+          android:layout_marginLeft="80dp"
+          android:layout_marginTop="50dp"
+          android:layout_marginRight="20dp"
+          android:layout_marginBottom="40dp"
+          android:background="@drawable/square2"
+          android:clickable="false"
+          android:focusable="false"
+          android:gravity="center"
+          android:padding="10dp"
+          android:textColor="#0295C3"
+          android:textSize="32sp" />
+
+
+
+      <Button
+          android:id="@+id/button_id"
+          android:layout_width="60dp"
+          android:layout_height="60dp"
+          android:textColor="#0295C3"
+          android:textSize="10sp"
+          android:gravity="center"
+          android:layout_marginTop="15dp"
+          android:background="@drawable/buttons"
+          android:text="Reshuffle" />
+   </LinearLayout>
+
+   <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/textTitle"
+        android:text="date duro"
+        android:textSize="24sp"
+        android:textColor="#FFF"
+        android:layout_marginRight="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginBottom="8dp"
+
+        android:layout_height="wrap_content"/>
+
+    
+    <LinearLayout
+        android:id="@+id/layoutParent"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutParent2"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+
+</LinearLayout>
