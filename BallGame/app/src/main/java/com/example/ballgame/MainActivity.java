@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
     //Elements
     private TextView scoreLabel, startLabel;
     private ImageView box,orange,pink,black;
+
+    //size
+    private int frameHeight;
+    private int frameWidth;
+    private int boxSize;
 
     //Position
     private float boxY;
@@ -60,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         black.setY(-80.0f);
 
         //Temporary
-         boxY=500.0f;
+         boxY=0;
 
 
     }
@@ -82,18 +88,25 @@ public class MainActivity extends AppCompatActivity {
     public void changePos(){
 
         if(swipe=="d"){
-            //touching
             boxY-=20;
         }else if(swipe=="u"){
-            //releasing
             boxY+=20;
         }else if(swipe=="l"){
             boxX-=20;
         }else if(swipe=="r"){
             boxX+=20;
         }
+
+        if(boxY<0) boxY=0;   //// boxY = 0 est la partie la plus haute de la view ( indice 0 en y dans la matrice de pixels)
+        if(boxX<0) boxX=0;   //// boxx = 0 est la partie la plus a gauche de la view ( indice 0 en x dans la matrice de pixels)
+        /// 0 en x et 0 en y correspondent a la coordone (0,0) CAD en haut a gauche dans la matrice de pixels
+        if(boxY> frameHeight - boxSize) boxY= frameHeight-boxSize;
+        if(boxX> frameWidth - boxSize) boxX= frameWidth-boxSize;
+
         box.setY(boxY);
         box.setX(boxX);
+
+
 
 
     }
@@ -106,6 +119,17 @@ public class MainActivity extends AppCompatActivity {
 
         if(!start_flg){
             start_flg=true;
+
+            FrameLayout frameLayout = findViewById(R.id.frame);
+            frameHeight = frameLayout.getHeight();
+            frameWidth = frameLayout.getWidth();
+
+            boxY = box.getY();
+            boxX = box.getX();
+            boxSize = box.getHeight();
+
+
+
             startLabel.setVisibility(View.GONE);
 
             timer.schedule(new TimerTask() {
