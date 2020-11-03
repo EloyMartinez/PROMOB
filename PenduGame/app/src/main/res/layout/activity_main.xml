@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/tv_lettres_tapees"
+        android:id="@+id/tv_letters_taping"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
