@@ -23,15 +23,15 @@
 
         <ImageView
             android:id="@+id/box1"
-            android:layout_width="20dp"
-            android:layout_height="100dp"
+            android:layout_width="25dp"
+            android:layout_height="70dp"
             android:src="@drawable/racket"
             android:layout_gravity="left"/>
 
         <ImageView
             android:id="@+id/box2"
-            android:layout_width="20dp"
-            android:layout_height="100dp"
+            android:layout_width="25dp"
+            android:layout_height="70dp"
             android:src="@drawable/racket"
             android:layout_gravity="right"/>
 
@@ -41,7 +41,6 @@
             android:layout_height="20dp"
             android:src="@drawable/ball"
             android:layout_gravity="center"/>
-
 
     </FrameLayout>
 
