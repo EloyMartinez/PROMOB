@@ -1,9 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/scoreLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="  —  "
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:padding="5dp"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background">
+
+        <ImageView
+            android:id="@+id/box1"
+            android:layout_width="20dp"
+            android:layout_height="100dp"
+            android:src="@drawable/racket"
+            android:layout_gravity="left"/>
+
+        <ImageView
+            android:id="@+id/box2"
+            android:layout_width="20dp"
+            android:layout_height="100dp"
+            android:src="@drawable/racket"
+            android:layout_gravity="right"/>
+
+        <ImageView
+            android:id="@+id/ball"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ball"
+            android:layout_gravity="center"/>
+
+
+    </FrameLayout>
+
+</LinearLayout>
