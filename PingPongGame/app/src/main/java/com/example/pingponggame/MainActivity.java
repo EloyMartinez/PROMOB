@@ -2,22 +2,17 @@ package com.example.pingponggame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.os.Handler;
-import android.provider.ContactsContract;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewTreeObserver;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -27,11 +22,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FrameLayout frame;
     private Button startBtn;
 
-    // Frame size
-    private int frameHeight, frameWidth;
+    // Dimensions frame
+    private float frameHeight, frameWidth;
 
-    // Box size
-    private int box1Height, box2Height;
+    // Dimensions boxs
+    private float box1Height, box1Width, box2Height, box2Width;
 
     // Positions
     private float box1Y, box2Y, ballX, ballY;
@@ -57,12 +52,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startBtn.setOnClickListener(this);
     }
 
+    @SuppressLint("SetTextI18n")
     public void initGame(){
         win = false;
         score1 = 0;
         score2 = 0;
 
-        scoreLabel.setText(String.valueOf(score1) + "   —   " + String.valueOf(score2));
+        scoreLabel.setText(score1 + "   —   " + score2);
 
         startBtn = (Button) findViewById(R.id.startBtn); // Démarre la partie
     }
@@ -87,6 +83,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ball.setY(ballY);
         ball.setX(ballX);
 
+        moveBoxes();
+
+        moveBall();
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    public void moveBoxes(){
         frame.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -108,6 +111,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             }
         });
+    }
+
+    public void moveBall(){
+        int fromX, toX, fromY, toY;
+        fromX = 100;
+        toX = 200;
+        fromY = 300;
+        toY = 400;
+
+        Animation move = new TranslateAnimation(fromX, toX, fromY, toY);
+        move.setDuration(2000);
+        ball.startAnimation(move);
     }
 
 }
