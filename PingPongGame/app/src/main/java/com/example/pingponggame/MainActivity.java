@@ -18,7 +18,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // Elements
     private TextView scoreLabel;
-    private ImageView box1, box2, ball;
+    private ImageView box1, box2;
+    private Ball ball;
     private FrameLayout frame;
     private Button startBtn;
 
@@ -44,8 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         scoreLabel = (TextView) findViewById(R.id.scoreLabel);
         box1 = (ImageView) findViewById(R.id.box1);
         box2 = (ImageView) findViewById(R.id.box2);
-        ball = (ImageView) findViewById(R.id.ball);
         frame = (FrameLayout) findViewById(R.id.frame);
+        ball = new Ball(this);
+        frame.addView(ball);
 
         initGame();
 
@@ -85,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         moveBoxes();
 
-        moveBall();
+        //moveBall();
     }
 
     @SuppressLint("ClickableViewAccessibility")
