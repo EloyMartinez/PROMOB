@@ -2,10 +2,14 @@ package com.example.ballgame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,17 +25,25 @@ public class MainActivity extends AppCompatActivity {
 
     //Elements
     private TextView scoreLabel, startLabel;
-    private ImageView box,orange,pink,black;
+    private ImageView box,orange,pink,black,red;
 
     //size
     private int frameHeight;
     private int frameWidth;
     private int boxSize;
+    private int screenHeight;
+    private int screenWidth;
 
     //Position
     private float boxY;
     private float boxX;
+    private float orangeX,orangeY;
+    private float pinkX,pinkY;
+    private float blackX,blackY;
+    private float redX,redY;
 
+    //score
+    private int score;
     //Timer
     private Timer timer = new Timer();
     private Handler handler = new Handler();
@@ -55,6 +67,16 @@ public class MainActivity extends AppCompatActivity {
         orange = findViewById(R.id.orange);
         pink = findViewById(R.id.pink);
         black = findViewById(R.id.black);
+        red = findViewById(R.id.red);
+
+        //screen size
+        WindowManager windowManager = getWindowManager();
+        Display display =windowManager.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+
+        screenWidth=size.x;
+        screenHeight=size.y;
 
 
         //initial position
@@ -64,9 +86,13 @@ public class MainActivity extends AppCompatActivity {
         pink.setY(-80.0f);
         black.setX(-80.0f);
         black.setY(-80.0f);
+        red.setX(-80.0f);
+        red.setY(-80.0f);
 
         //Temporary
          boxY=0;
+
+         scoreLabel.setText("Score: "+ score);
 
 
     }
@@ -87,6 +113,46 @@ public class MainActivity extends AppCompatActivity {
 
     public void changePos(){
 
+        hitCheck();
+
+        //Orange
+        orangeX -=12;
+        if(orangeX<0){
+            orangeX = screenWidth + 20;
+            orangeY = (float)Math.floor(Math.random() * frameHeight - orange.getHeight());
+        }
+        orange.setX(orangeX);
+        orange.setY(orangeY);
+
+        //black
+        blackX -=10;
+        if(blackX<0){
+            blackX= screenWidth + 10;
+            blackY = (float)Math.floor(Math.random() * frameHeight - black.getHeight());
+        }
+        black.setY(blackY);
+        black.setX(blackX);
+
+        //pink
+        pinkX-=30;
+        if(pinkX<0) {
+            pinkX = screenWidth + 200;
+            pinkY = (float) Math.floor(Math.random() * frameHeight - orange.getHeight());
+        }
+        pink.setX(pinkX);
+        pink.setY(pinkY);
+
+
+        //red
+       redX-=20;
+        if(redX<0) {
+            redX = screenWidth + 100;
+            redY = (float) Math.floor(Math.random() * frameHeight - orange.getHeight());
+        }
+        red.setX(redX);
+        red.setY(redY);
+
+
         if(swipe=="d"){
             boxY-=20;
         }else if(swipe=="u"){
@@ -106,7 +172,54 @@ public class MainActivity extends AppCompatActivity {
         box.setY(boxY);
         box.setX(boxX);
 
+        scoreLabel.setText("Score: "+ score);
 
+
+
+    }
+
+    public void hitCheck(){
+
+
+        //orange
+        float orangecenterX = orangeX + orange.getWidth() /2.0f;
+        float orangecenterY = orangeY + orange.getHeight() / 2.0f;
+
+        if(boxX<= orangecenterX && orangecenterX <= boxSize+boxX && boxY <= orangecenterY && orangecenterY <= boxY +boxSize){
+            orangeX = -100.0f;
+            score+=10;
+        }
+
+        //pink
+        float pinkcenterX= pinkX +pink.getWidth()/2.0f;
+        float pinkcenterY = pinkY + pink.getHeight() / 2.0f;
+
+        if(boxX<= pinkcenterX && pinkcenterX <= boxSize+boxX && boxY <= pinkcenterY && pinkcenterY <= boxY +boxSize){
+            pinkX = -100.0f;
+            score+=100;
+        }
+
+        //black
+        float blackcenterX= blackX +black.getWidth()/2.0f;
+        float blackcenterY = blackY + black.getHeight() / 2.0f;
+
+        if(boxX<= blackcenterX && blackcenterX <= boxSize+boxX && boxY <= blackcenterY && blackcenterY <= boxY +boxSize){
+            timer.cancel();
+            timer = null;
+
+
+            Intent intent = new Intent(this,ResultActivity.class);
+            intent.putExtra("SCORE",score);
+            startActivity(intent);
+        }
+        //red
+        float redcenterX= redX +red.getWidth()/2.0f;
+        float redcenterY = redY + red.getHeight() / 2.0f;
+
+        if(boxX<= redcenterX && redcenterX <= boxSize+boxX && boxY <= redcenterY && redcenterY <= boxY +boxSize){
+            redX = -100.0f;
+            score-=100;
+        }
 
 
     }
