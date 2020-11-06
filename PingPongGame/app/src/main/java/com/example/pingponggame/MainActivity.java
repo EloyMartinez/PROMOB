@@ -85,9 +85,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ball.setY(ballY);
         ball.setX(ballX);
 
-        moveBoxes();
+        ball.setXMin(Math.round(0)); // Défini la bordure de gauche à ne pas dépasser par la balle
+        ball.setYMin(Math.round(0)); // Défini la bordure du haut à ne pas dépasser par la balle
+        ball.setXMax(Math.round(frameWidth)); // Défini la bordure de droite à ne pas dépasser par la balle
+        ball.setYMax(Math.round(frameHeight)); // Défini la bordure du bas à ne pas dépasser par la balle
 
-        //moveBall();
+        moveBoxes();
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -113,18 +116,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             }
         });
-    }
-
-    public void moveBall(){
-        int fromX, toX, fromY, toY;
-        fromX = 100;
-        toX = 200;
-        fromY = 300;
-        toY = 400;
-
-        Animation move = new TranslateAnimation(fromX, toX, fromY, toY);
-        move.setDuration(2000);
-        ball.startAnimation(move);
     }
 
 }
