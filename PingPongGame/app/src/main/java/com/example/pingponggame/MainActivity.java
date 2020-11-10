@@ -7,8 +7,6 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -17,10 +15,10 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     // Elements
-    private TextView scoreLabel;
-    private ImageView box1, box2;
-    private Ball ball;
-    private FrameLayout frame;
+    private static TextView scoreLabel;
+    private static ImageView box1, box2;
+    private static Ball ball;
+    private static FrameLayout frame;
     private Button startBtn;
 
     // Dimensions frame
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // Variables de jeu
     private boolean win;
-    private int score1, score2;
+    private static int score1, score2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,28 +44,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         box1 = (ImageView) findViewById(R.id.box1);
         box2 = (ImageView) findViewById(R.id.box2);
         frame = (FrameLayout) findViewById(R.id.frame);
+
         ball = new Ball(this);
         frame.addView(ball);
+        ball.setVisibility(View.INVISIBLE);
 
         initGame();
 
         startBtn.setOnClickListener(this);
     }
 
-    @SuppressLint("SetTextI18n")
     public void initGame(){
         win = false;
         score1 = 0;
         score2 = 0;
 
-        scoreLabel.setText(score1 + "   —   " + score2);
-
-        startBtn = (Button) findViewById(R.id.startBtn); // Démarre la partie
+        startBtn = (Button) findViewById(R.id.startBtn); // Bouton de lancement de partie
     }
 
     @Override
     public void onClick(View v) {
-        startBtn.setX(-500); // Sors le bouton du cadre pour le rendre invisible
+        startBtn.setX(-500); // Sors le bouton du cadre pour le rendre invisible et inclicable
+
+        ball.setVisibility(View.VISIBLE);
 
         box1Height = box1.getHeight();
         box2Height = box2.getHeight();
@@ -82,8 +81,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         box1.setY(box1Y);
         box2.setY(box2Y);
-        ball.setY(ballY);
         ball.setX(ballX);
+        ball.setY(ballY);
 
         ball.setXMin(Math.round(0)); // Défini la bordure de gauche à ne pas dépasser par la balle
         ball.setYMin(Math.round(0)); // Défini la bordure du haut à ne pas dépasser par la balle
@@ -116,6 +115,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return true;
             }
         });
+    }
+
+    @SuppressLint("SetTextI18n")
+    public static void goal(){
+        if(Ball.getBallBounds().right > frame.getWidth()){
+            score1++;
+        } else if(Ball.getBallBounds().left < 0){
+            score2++;
+        }
+        scoreLabel.setText(score1 + "   —   " + score2);
+    }
+
+    public static ImageView getBox1(){
+        return box1;
+    }
+
+    public static ImageView getBox2(){
+        return box2;
+    }
+
+    public static FrameLayout getFrame() {
+        return frame;
     }
 
 }
