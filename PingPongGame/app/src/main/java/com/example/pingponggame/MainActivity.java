@@ -3,6 +3,8 @@ package com.example.pingponggame;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -12,6 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+@SuppressLint("StaticFieldLeak")
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     // Elements
@@ -25,13 +28,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private float frameHeight, frameWidth;
 
     // Dimensions boxs
-    private float box1Height, box1Width, box2Height, box2Width;
+    private float box1Height, box2Height;
 
     // Positions
-    private float box1Y, box2Y, ballX, ballY;
+    private float box1Y, box2Y;
 
-    // Variables de jeu
-    private boolean win;
+    // Scores
     private static int score1, score2;
 
     @Override
@@ -55,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void initGame(){
-        win = false;
         score1 = 0;
         score2 = 0;
 
@@ -76,13 +77,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         box1Y = (frameHeight - box1Height)/2;
         box2Y = (frameHeight - box2Height)/2;
-        ballX = (frameWidth - ball.getWidth())/2;
-        ballY = (frameHeight - ball.getHeight())/2;
 
         box1.setY(box1Y);
         box2.setY(box2Y);
-        ball.setX(ballX);
-        ball.setY(ballY);
+        //ball.setX(frameWidth/2);
+        //ball.setY(frameHeight/2);
 
         ball.setXMin(Math.round(0)); // Défini la bordure de gauche à ne pas dépasser par la balle
         ball.setYMin(Math.round(0)); // Défini la bordure du haut à ne pas dépasser par la balle
@@ -119,12 +118,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @SuppressLint("SetTextI18n")
     public static void goal(){
-        if(Ball.getBallBounds().right > frame.getWidth()){
+        if(Ball.getBallBounds().right >= frame.getWidth()){
             score1++;
-        } else if(Ball.getBallBounds().left < 0){
+        } else if(Ball.getBallBounds().left <= 0){
             score2++;
         }
         scoreLabel.setText(score1 + "   —   " + score2);
+    }
+
+    public void endGame(){
+        if(score1 == 11 || score2 == 11){
+            frame.removeView(ball);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            if(score1 == 11){
+                builder.setTitle(R.string.win1);
+            } else {
+                builder.setTitle(R.string.win2);
+            }
+
+            builder.setPositiveButton(getResources().getString(R.string.replay), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    initGame();
+                }
+            });
+
+            builder.create().show();
+        }
     }
 
     public static ImageView getBox1(){

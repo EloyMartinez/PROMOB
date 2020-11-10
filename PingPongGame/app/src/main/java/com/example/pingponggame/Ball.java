@@ -53,7 +53,6 @@ public class Ball extends View {
     }
 
     // Détecte les collisions et met à jour la position de la balle
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     private void update(){
         // Prend les nouvelles positions (x,y)
         ballX += ballSpeedX;
@@ -81,20 +80,24 @@ public class Ball extends View {
         touchBoxes();
 
         MainActivity.goal();
+
+        //MainActivity.endGame();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     public void touchBoxes(){
         int[] location1 = new int[2];
-        box1.getLocationInSurface(location1);
+        box1.getLocationOnScreen(location1);
         int[] location2 = new int[2];
-        box2.getLocationInSurface(location2);
+        box2.getLocationOnScreen(location2);
 
-        if(((box2.getLeft() - ballBounds.right) < 10) && ((location2[1] - box2.getHeight()/2) <= ballBounds.top)
-                && ((location2[1] + box2.getHeight()/2) >= ballBounds.bottom)){
+        float box1Height = Math.round(box2.getHeight());
+        float box2Height = Math.round(box2.getHeight());
+
+        if(((box2.getLeft() - ballBounds.right) < 10) && ((location2[1] - box2Height/2) <= ballBounds.top)
+                && ((location2[1] + box2Height/2) >= ballBounds.bottom)){
             setXMax(Math.round(box2.getLeft()));
-        } else if(((ballBounds.left - box1.getRight()) < 10) && ((location1[1] - box1.getHeight()/2) <= ballBounds.top)
-                && ((location1[1] + box1.getHeight()/2) >= ballBounds.bottom)){
+        } else if(((ballBounds.left - box1.getRight()) < 10) && ((location1[1] - box1Height/2) <= ballBounds.top)
+                && ((location1[1] + box1Height/2) >= ballBounds.bottom)){
             setXMin(Math.round(box1.getRight()));
         }
     }
