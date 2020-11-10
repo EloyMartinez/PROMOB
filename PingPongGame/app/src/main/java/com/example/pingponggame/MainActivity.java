@@ -80,8 +80,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         box1.setY(box1Y);
         box2.setY(box2Y);
-        //ball.setX(frameWidth/2);
-        //ball.setY(frameHeight/2);
+        ball.setBallX(frameWidth/2);
+        ball.setBallY(frameHeight/2);
 
         ball.setXMin(Math.round(0)); // Défini la bordure de gauche à ne pas dépasser par la balle
         ball.setYMin(Math.round(0)); // Défini la bordure du haut à ne pas dépasser par la balle

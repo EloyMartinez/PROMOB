@@ -5,11 +5,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.os.Build;
 import android.view.View;
 import android.widget.ImageView;
-
-import androidx.annotation.RequiresApi;
 
 public class Ball extends View {
 
@@ -20,11 +17,11 @@ public class Ball extends View {
     private int xMax;
     private int yMin;
     private int yMax;
-    private final float ballRadius = 20; // Rayon de la balle
-    private float ballX = ballRadius + 10; // Centre de la balle (x,y)
-    private float ballY = ballRadius + 10;
-    private float ballSpeedX = 20; // Vitesse de la balle (x,y)
-    private float ballSpeedY = 10;
+    private final static float ballRadius = 20; // Rayon de la balle
+    private static float ballX = ballRadius + 10; // Centre de la balle (x,y)
+    private static float ballY = ballRadius + 10;
+    private float ballSpeedX = 20 + Math.round(Math.random()*20); // Vitesse de la balle (x,y)
+    private float ballSpeedY = 10 + Math.round(Math.random()*10);
     private static RectF ballBounds; // Nécessaire pour Canvas.drawOval
     private final Paint paint; // Couleur de la balle
 
@@ -34,7 +31,6 @@ public class Ball extends View {
         paint = new Paint();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onDraw(Canvas canvas){
         // Dessine la balle
@@ -120,6 +116,22 @@ public class Ball extends View {
 
     public void setYMax(int yMax){
         this.yMax = yMax;
+    }
+
+    public float getBallX(){
+        return ballX;
+    }
+
+    public void setBallX(float xPosition){
+        ballX = xPosition;
+    }
+
+    public float getBallY(){
+        return ballY;
+    }
+
+    public void setBallY(float yPosition){
+        ballY = yPosition;
     }
 
 }
