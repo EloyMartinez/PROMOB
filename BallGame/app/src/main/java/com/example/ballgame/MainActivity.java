@@ -25,12 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
     //Elements
     private TextView scoreLabel, startLabel;
-    private ImageView box,orange,pink,black,red;
+    private ImageView box,orange,pink,black,red,black1;
 
     //size
     private int frameHeight;
     private int frameWidth;
     private int boxSize;
+    private int blackSize;
+    private int black1Size;
     private int screenHeight;
     private int screenWidth;
 
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private float orangeX,orangeY;
     private float pinkX,pinkY;
     private float blackX,blackY;
+    private float black1X,black1Y;
     private float redX,redY;
 
     //score
@@ -68,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         pink = findViewById(R.id.pink);
         black = findViewById(R.id.black);
         red = findViewById(R.id.red);
+        black1 = findViewById(R.id.black1);
 
         //screen size
         WindowManager windowManager = getWindowManager();
@@ -88,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
         black.setY(-80.0f);
         red.setX(-80.0f);
         red.setY(-80.0f);
+        black1.setY(1640f);
+        black1.setX(1640f);
+        blackY=black1.getY();
 
         //Temporary
          boxY=0;
@@ -132,6 +139,19 @@ public class MainActivity extends AppCompatActivity {
         }
         black.setY(blackY);
         black.setX(blackX);
+
+        //black1
+        black1Y +=10;
+        float tmp=black1.getY();
+        black1Size = black.getHeight();
+        if(black1.getY()>frameHeight - black1Size){
+
+            black1X= (float)Math.floor(Math.random() * frameWidth - black1.getWidth());
+            black1Y = -10;
+
+        }
+        black1.setY(black1Y);
+        black1.setX(black1X);
 
         //pink
         pinkX-=30;
@@ -204,6 +224,20 @@ public class MainActivity extends AppCompatActivity {
         float blackcenterY = blackY + black.getHeight() / 2.0f;
 
         if(boxX<= blackcenterX && blackcenterX <= boxSize+boxX && boxY <= blackcenterY && blackcenterY <= boxY +boxSize){
+            timer.cancel();
+            timer = null;
+
+
+            Intent intent = new Intent(this,ResultActivity.class);
+            intent.putExtra("SCORE",score);
+            startActivity(intent);
+        }
+
+        //black
+        float blackcenter1X= black1X +black1.getWidth()/2.0f;
+        float blackcenter1Y = black1Y + black1.getHeight() / 2.0f;
+
+        if(boxX<= blackcenter1X && blackcenter1X <= boxSize+boxX && boxY <= blackcenter1Y && blackcenter1Y <= boxY +boxSize){
             timer.cancel();
             timer = null;
 

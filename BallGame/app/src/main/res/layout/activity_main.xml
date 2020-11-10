@@ -59,6 +59,12 @@
             android:layout_height="16dp"
             android:src="@drawable/red"/>
 
+        <ImageView
+            android:id="@+id/black1"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/black1"/>
+
     </FrameLayout>
 
 </LinearLayout>

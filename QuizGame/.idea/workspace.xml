@@ -7,13 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce040281-171a-4037-b051-eb68de05aff9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../BallGame/app/src/main/java/com/example/ballgame/ResultActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BallGame/app/src/main/res/layout/activity_result.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BallGame/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BallGame/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BallGame/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BallGame/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BallGame/app/src/main/java/com/example/ballgame/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BallGame/app/src/main/java/com/example/ballgame/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BallGame/app/src/main/res/drawable/pink.png" beforeDir="false" afterPath="$PROJECT_DIR$/../BallGame/app/src/main/res/drawable/pink.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BallGame/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BallGame/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BallGame/app/src/main/java/com/example/ballgame/ResultActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BallGame/app/src/main/java/com/example/ballgame/ResultActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BallGame/app/src/main/res/layout/activity_result.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BallGame/app/src/main/res/layout/activity_result.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
