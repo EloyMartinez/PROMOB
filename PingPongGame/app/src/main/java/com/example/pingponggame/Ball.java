@@ -50,7 +50,6 @@ public class Ball extends View {
             ballSpeedY = -ballSpeedY;
         }
 
-
         Button startBtn = MainActivity.getStartBtn();
         float frameWidth = frame.getWidth();
         float startBtnWidth = startBtn.getWidth();
