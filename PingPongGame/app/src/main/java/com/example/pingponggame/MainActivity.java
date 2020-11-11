@@ -3,8 +3,6 @@ package com.example.pingponggame;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -22,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static ImageView box1, box2;
     private static Ball ball;
     private static FrameLayout frame;
-    private Button startBtn;
+    private static Button startBtn;
 
     // Dimensions frame
     private float frameHeight, frameWidth;
@@ -33,41 +31,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // Positions
     private float box1Y, box2Y;
 
-    // Scores
-    private static int score1, score2;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        scoreLabel = (TextView) findViewById(R.id.scoreLabel);
-        box1 = (ImageView) findViewById(R.id.box1);
-        box2 = (ImageView) findViewById(R.id.box2);
-        frame = (FrameLayout) findViewById(R.id.frame);
+        scoreLabel = findViewById(R.id.scoreLabel);
+        box1 = findViewById(R.id.box1);
+        box2 = findViewById(R.id.box2);
+        frame = findViewById(R.id.frame);
+        startBtn = findViewById(R.id.startBtn);
 
         ball = new Ball(this);
-        frame.addView(ball);
-        ball.setVisibility(View.INVISIBLE);
-
-        initGame();
 
         startBtn.setOnClickListener(this);
-    }
-
-    public void initGame(){
-        score1 = 0;
-        score2 = 0;
-
-        startBtn = (Button) findViewById(R.id.startBtn); // Bouton de lancement de partie
     }
 
     @Override
     public void onClick(View v) {
         startBtn.setX(-500); // Sors le bouton du cadre pour le rendre invisible et inclicable
 
-        ball.setVisibility(View.VISIBLE);
+        frame.addView(ball);
 
         box1Height = box1.getHeight();
         box2Height = box2.getHeight();
@@ -116,38 +101,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    @SuppressLint("SetTextI18n")
-    public static void goal(){
-        if(Ball.getBallBounds().right >= frame.getWidth()){
-            score1++;
-        } else if(Ball.getBallBounds().left <= 0){
-            score2++;
-        }
-        scoreLabel.setText(score1 + "   —   " + score2);
-    }
-
-    public void endGame(){
-        if(score1 == 11 || score2 == 11){
-            frame.removeView(ball);
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            if(score1 == 11){
-                builder.setTitle(R.string.win1);
-            } else {
-                builder.setTitle(R.string.win2);
-            }
-
-            builder.setPositiveButton(getResources().getString(R.string.replay), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    initGame();
-                }
-            });
-
-            builder.create().show();
-        }
-    }
-
     public static ImageView getBox1(){
         return box1;
     }
@@ -158,6 +111,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public static FrameLayout getFrame() {
         return frame;
+    }
+
+    public static void setScoreLabel(String text){
+        scoreLabel.setText(text);
+    }
+
+    public static Button getStartBtn(){
+        return startBtn;
     }
 
 }

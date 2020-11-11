@@ -1,34 +1,60 @@
 package com.example.pingponggame;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 public class Ball extends View {
 
-    ImageView box1 = MainActivity.getBox1();
-    ImageView box2 = MainActivity.getBox2();
+    private final ImageView box1 = MainActivity.getBox1();
+    private final ImageView box2 = MainActivity.getBox2();
+    private final FrameLayout frame = MainActivity.getFrame();
 
-    private int xMin;
-    private int xMax;
-    private int yMin;
-    private int yMax;
+    private final Context context;
+
+    private static int score1, score2;
+    private int xMin, xMax, yMin, yMax;
     private final static float ballRadius = 20; // Rayon de la balle
     private static float ballX = ballRadius + 10; // Centre de la balle (x,y)
     private static float ballY = ballRadius + 10;
-    private float ballSpeedX = 20 + Math.round(Math.random()*20); // Vitesse de la balle (x,y)
-    private float ballSpeedY = 10 + Math.round(Math.random()*10);
+    private float ballSpeedX; // Vitesse de la balle (x,y)
+    private float ballSpeedY;
     private static RectF ballBounds; // Nécessaire pour Canvas.drawOval
     private final Paint paint; // Couleur de la balle
 
     public Ball(Context context) {
         super(context);
+        this.context = context;
         ballBounds = new RectF();
         paint = new Paint();
+
+        initGame();
+    }
+
+    public void initGame(){
+        score1 = 0;
+        score2 = 0;
+
+        ballSpeedX = 20 + Math.round(Math.random()*20);
+        ballSpeedY = 10 + Math.round(Math.random()*10);
+        if(Math.random() < 0.5){ // Sens de départ au hasard
+            ballSpeedX = -ballSpeedX;
+            ballSpeedY = -ballSpeedY;
+        }
+
+
+        Button startBtn = MainActivity.getStartBtn();
+        float frameWidth = frame.getWidth();
+        float startBtnWidth = startBtn.getWidth();
+        startBtn.setX(frameWidth/2 - startBtnWidth/2); // Remet le bouton de démarrage à sa position initiale
     }
 
     @Override
@@ -75,9 +101,9 @@ public class Ball extends View {
 
         touchBoxes();
 
-        MainActivity.goal();
+        goal();
 
-        //MainActivity.endGame();
+        endGame();
     }
 
     public void touchBoxes(){
@@ -95,6 +121,37 @@ public class Ball extends View {
         } else if(((ballBounds.left - box1.getRight()) < 10) && ((location1[1] - box1Height/2) <= ballBounds.top)
                 && ((location1[1] + box1Height/2) >= ballBounds.bottom)){
             setXMin(Math.round(box1.getRight()));
+        }
+    }
+
+    public void goal(){
+        if(Ball.getBallBounds().right >= frame.getWidth()){
+            score1++;
+        } else if(Ball.getBallBounds().left <= 0){
+            score2++;
+        }
+        MainActivity.setScoreLabel(score1 + "   —   " + score2);
+    }
+
+    public void endGame(){
+        if(score1 == 11 || score2 == 11){
+            frame.removeView(this);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            if(score1 == 11){
+                builder.setTitle(R.string.win1);
+            } else {
+                builder.setTitle(R.string.win2);
+            }
+
+            builder.setPositiveButton(R.string.replay, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    initGame();
+                }
+            });
+
+            builder.create().show();
         }
     }
 
@@ -118,16 +175,8 @@ public class Ball extends View {
         this.yMax = yMax;
     }
 
-    public float getBallX(){
-        return ballX;
-    }
-
     public void setBallX(float xPosition){
         ballX = xPosition;
-    }
-
-    public float getBallY(){
-        return ballY;
     }
 
     public void setBallY(float yPosition){
