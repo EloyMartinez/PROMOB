@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <EditText
+    <TextView
         android:id="@+id/scoreLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="  —  "
         android:textSize="25sp"
         android:textAlignment="center"
-        android:padding="5dp"/>
+        android:layout_gravity="center"
+        android:text="—"
+        tools:ignore="HardcodedText"/>
 
     <FrameLayout
+        android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background">
@@ -26,20 +27,22 @@
             android:layout_width="25dp"
             android:layout_height="70dp"
             android:src="@drawable/racket"
-            android:layout_gravity="left"/>
+            android:layout_gravity="start"
+            tools:ignore="ContentDescription"/>
 
         <ImageView
             android:id="@+id/box2"
             android:layout_width="25dp"
             android:layout_height="70dp"
             android:src="@drawable/racket"
-            android:layout_gravity="right"/>
+            android:layout_gravity="end"
+            tools:ignore="ContentDescription"/>
 
-        <ImageView
-            android:id="@+id/ball"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/ball"
+        <Button
+            android:id="@+id/startBtn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="@string/play"
             android:layout_gravity="center"/>
 
     </FrameLayout>
