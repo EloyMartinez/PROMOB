@@ -3,8 +3,10 @@ package com.example.pendugame;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,9 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,18 +23,21 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private LinearLayout container;
-    private Button btn_send;
     private TextView letters_taping;
     private ImageView image;
     private EditText et_letter;
+    private TextView timerTextView;
 
+    private long startTime = 0;
     private String word;
     private int found;
     private int error;
-    private List<Character> listOfLetters = new ArrayList<>();
-    private boolean win;
+    private final List<Character> listOfLetters = new ArrayList<>();
 
     private List<String> wordList = new ArrayList<>();
+
+    private int seconds;
+    private int minutes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,29 +45,56 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         container = (LinearLayout) findViewById(R.id.word_container);
-        btn_send = (Button) findViewById(R.id.btn_send);
+        Button btn_send = (Button) findViewById(R.id.btn_send);
         et_letter = (EditText) findViewById(R.id.et_letter);
         image = (ImageView) findViewById(R.id.iv_pendu);
         letters_taping = (TextView) findViewById(R.id.tv_letters_taping);
+        timerTextView = (TextView) findViewById(R.id.timer);
+
+        startTime = System.currentTimeMillis();
+        timerHandler.postDelayed(timerRunnable, 0);
 
         initGame();
 
         btn_send.setOnClickListener(this);
     }
 
+    Handler timerHandler = new Handler();
+    Runnable timerRunnable = new Runnable() {
+        @SuppressLint("DefaultLocale")
+        @Override
+        public void run() {
+            long millis = System.currentTimeMillis() - startTime;
+            seconds = (int) (millis / 1000);
+            minutes = seconds / 60;
+            seconds = seconds % 60;
+
+            timerTextView.setText(String.format("%d:%02d", minutes, seconds));
+
+            timerHandler.postDelayed(this, 500);
+        }
+    };
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        timerHandler.removeCallbacks(timerRunnable);
+    }
+
     public void initGame() {
         word = generateWord();
-        win = false;
         error = 0;
         found = 0;
         letters_taping.setText("");
         listOfLetters.clear();
         image.setBackgroundResource(R.drawable.first);
+        startTime = System.currentTimeMillis();
+        timerHandler.postDelayed(timerRunnable, 0);
 
         container.removeAllViews();
 
         for(int i = 0; i < word.length(); i++){
-            TextView oneLetter = (TextView) getLayoutInflater().inflate(R.layout.textview, null);
+            @SuppressLint("InflateParams") TextView oneLetter = (TextView) getLayoutInflater().inflate(R.layout.textview, null);
             container.addView(oneLetter);
         }
     }
@@ -83,8 +112,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         if(found == word.length()){ // Si la partie est gagnée
+            timerHandler.removeCallbacks(timerRunnable);
             createDialog(true);
-            win = true;
         }
 
         if(!word.contains(letterFromInput)){ // Si le lettre n'est pas dans le mot
@@ -92,6 +121,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         setImage(error);
         if(error == 6){ // Si la partie est perdue
+            timerHandler.removeCallbacks(timerRunnable);
             createDialog(false);
         }
 
@@ -119,13 +149,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void showAllLetters(List<Character> listOfLetters){
-        String chain = "";
+        StringBuilder chain = new StringBuilder();
 
         for(int i = 0; i < listOfLetters.size(); i++){
-            chain += listOfLetters.get(i) + "\n";
+            chain.append(listOfLetters.get(i)).append("\n");
         }
-        if(!chain.equals("")){
-            letters_taping.setText(chain);
+        if(!chain.toString().equals("")){
+            letters_taping.setText(chain.toString());
         }
     }
 
@@ -154,13 +184,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void createDialog(boolean win){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Vous avez gagné !");
+
+        String winString = "Vous avez gagné en ";
+        if(minutes > 1 && seconds > 1){
+            winString += minutes + " minutes et " + seconds + " secondes !";
+        } else if(minutes > 1){
+            winString += minutes + " minutes et " + seconds + " seconde !";
+        } else if(seconds > 1){
+            winString += minutes + " minute et " + seconds + " secondes !";
+        } else {
+            winString += minutes + " minute et " + seconds + " seconde !";
+        }
+        builder.setTitle(winString);
 
         if(!win){
             builder.setTitle("Vous avez perdu...");
             builder.setMessage("Le mot à trouver était : " + word);
         }
-        builder.setPositiveButton(getResources().getString(R.string.replay), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.replay, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 initGame();
