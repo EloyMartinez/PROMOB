@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -18,8 +19,22 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     private int pressCounter=0;
     private int maxPressCounter=8;
-    private String[] keys = {"C","O","O","L","F","F","I","N","M","B"};
-    private String textAnswer  = "COOL";
+    private String[] keys;
+    private String textAnswer;
+    private String[] dogAR = {"D","O","O","L","F","F","I","G","M","B"};
+    private String dog  = "DOG";
+    private String[] horseAR = {"H","O","R","S","E","F","I","G","M","O"};
+    private String horse  = "HORSE";
+    private String[] fishAR = {"F","I","S","H","E","F","I","G","M","O"};
+    private String fish  = "FISH";
+    private String[] birdAR = {"H","O","R","S","E","B","I","R","D","O"};
+    private String bird  = "BIRD";
+    private String[] pigAR = {"H","O","I","P","E","B","I","G","D","O"};
+    private String pig  = "PIG";
+    private String[][] keyset = { dogAR, horseAR, fishAR, birdAR, pigAR };
+    private String [] answerset = {dog,horse,fish,bird,pig};
+    private int counter =0;
+
     TextView textScreen, textQuestion, textTitle;
     Button delButton;
 
@@ -28,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        keys = keyset[counter];
+        textAnswer = answerset[counter];
+
 
         keys = shuffleArray(keys);
 
@@ -149,13 +167,19 @@ public class MainActivity extends AppCompatActivity {
        boolean a= editText.getText().toString().equals(textAnswer.toString());
 
         if(editText.getText().toString().equals(textAnswer.toString())){
-            Toast.makeText(MainActivity.this,"Correct",Toast.LENGTH_SHORT).show();
+            createToast("That's right!");
+
             editText.setText("");
             pressCounter=0;
+            counter++;
+            keys=keyset[counter];
+            textAnswer=answerset[counter];
 
             keys=shuffleArray(keys);
             linearLayout.removeAllViews();
             linearLayout2.removeAllViews();
+            nextOne();
+
             int cont=0;
 
             for(String key: keys){
@@ -170,22 +194,28 @@ public class MainActivity extends AppCompatActivity {
     }}
 
     private void doValidate() {
+
         pressCounter=0;
         EditText editText = findViewById(R.id.editText);
     LinearLayout linearLayout = findViewById(R.id.layoutParent);
     LinearLayout linearLayout2=findViewById(R.id.layoutParent2);
 
     if(editText.getText().toString().equals(textAnswer)){
-        Toast.makeText(MainActivity.this,"Correct",Toast.LENGTH_SHORT).show();
-        editText.setText("");
+        createToast("That's right!");
+
+    editText.setText("");
+        counter++;
+        keys=keyset[counter];
+        textAnswer=answerset[counter];
     }else{
-        Toast.makeText(MainActivity.this,"Wrong",Toast.LENGTH_SHORT).show();
+       createToast("That's not right...");
 
         editText.setText("");
     }
     keys=shuffleArray(keys);
     linearLayout.removeAllViews();
     linearLayout2.removeAllViews();
+        nextOne();
     int cont=0;
 
     for(String key: keys){
@@ -209,6 +239,30 @@ public class MainActivity extends AppCompatActivity {
             ar[i]=a;
         }
         return ar;
+    }
+
+    private void createToast(String message){
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.custom_toast, (ViewGroup) findViewById(R.id.custom_toast_container));
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/FredokaOneRegular.ttf");
+
+        TextView text = layout.findViewById(R.id.text);
+        text.setTypeface(typeface);
+        text.setText(message);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER,0,0);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+        toast.show();
+
+    }
+
+    private void nextOne(){
+        TextView editText = findViewById(R.id.textScreen);
+        editText.setText(counter+"/5");
+
+
     }
 
     
