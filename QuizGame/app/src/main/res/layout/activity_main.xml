@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Responde ahi bruja!"
+        android:text="0/5"
         android:textColor="#FFF"
         android:textSize="22sp" />
 
@@ -35,7 +35,7 @@
             android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="PROMOB IS?"
+            android:text="ANIMALS!\n(in english)"
             android:textColor="#0295C3"
             android:textSize="26sp" />
 
@@ -83,7 +83,7 @@
    <TextView
         android:layout_width="match_parent"
         android:id="@+id/textTitle"
-        android:text="date duro"
+        android:text="Spell an animal!"
         android:textSize="24sp"
         android:textColor="#FFF"
         android:layout_marginRight="28dp"
@@ -119,5 +119,7 @@
         android:layout_height="wrap_content">
 
     </LinearLayout>
+
+
 
 </LinearLayout>
