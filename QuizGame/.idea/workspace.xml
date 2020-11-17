@@ -6,17 +6,9 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce040281-171a-4037-b051-eb68de05aff9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/quizgame/starterActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_starter.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_toast.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BallGame/app/src/main/res/drawable/black1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BallGame/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../BallGame/build.gradle" afterDir="false" />
+    <list default="true" id="0c6a9e9a-07ba-4078-a48b-76948596ffb4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/quizgame/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/quizgame/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,31 +24,14 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="QuizGame" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
+        <projects_view />
       </state>
     </system>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1jNnhsgXN2bumpt8YW2FXHQcBvf" />
+  <component name="ProjectId" id="1kQwVIESB8dOw3zibq0vOY5JP5w" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -65,16 +40,6 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.17" />
-    <property name="project.structure.side.proportion" value="0.2" />
-  </component>
-  <component name="RecentsManager">
-    <key name="android.template.-2022281267">
-      <recent name="com.example.quizgame" />
-    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -84,7 +49,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -141,22 +106,22 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ce040281-171a-4037-b051-eb68de05aff9" name="Default Changelist" comment="" />
-      <created>1603653538366</created>
+      <changelist id="0c6a9e9a-07ba-4078-a48b-76948596ffb4" name="Default Changelist" comment="" />
+      <created>1605646144234</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1603653538366</updated>
+      <updated>1605646144234</updated>
     </task>
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="245" y="189" key="#PSD" timestamp="1603653548684">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="143" y="71" key="MergeDialog" timestamp="1605645890490">
+      <screen x="0" y="0" width="1440" height="820" />
     </state>
-    <state x="245" y="189" key="#PSD/0.0.1440.900@0.0.1440.900" timestamp="1603653548684" />
-    <state x="390" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1605608241165">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="143" y="71" key="MergeDialog/0.0.1440.820@0.0.1440.820" timestamp="1605645890490" />
+    <state x="422" y="133" key="MultipleFileMergeDialog" timestamp="1605645904968">
+      <screen x="0" y="0" width="1440" height="820" />
     </state>
-    <state x="390" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1605608241165" />
+    <state x="422" y="133" key="MultipleFileMergeDialog/0.0.1440.820@0.0.1440.820" timestamp="1605645904968" />
   </component>
 </project>
