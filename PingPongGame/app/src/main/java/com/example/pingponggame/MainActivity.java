@@ -2,16 +2,123 @@ package com.example.pingponggame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+@SuppressLint("StaticFieldLeak")
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+    // Elements
+    private static TextView scoreLabel;
+    private static ImageView box1, box2;
+    private static Ball ball;
+    private static FrameLayout frame;
+    private static Button startBtn;
+
+    // Dimensions frame
+    private float frameHeight, frameWidth;
+
+    // Dimensions boxs
+    private float box1Height, box2Height;
+
+    // Positions
+    private float box1Y, box2Y;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        scoreLabel = findViewById(R.id.scoreLabel);
+        box1 = findViewById(R.id.box1);
+        box2 = findViewById(R.id.box2);
+        frame = findViewById(R.id.frame);
+        startBtn = findViewById(R.id.startBtn);
+
+        ball = new Ball(this);
+
+        startBtn.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        startBtn.setX(-500); // Sors le bouton du cadre pour le rendre invisible et inclicable
+
+        frame.addView(ball);
+
+        box1Height = box1.getHeight();
+        box2Height = box2.getHeight();
+
+        frameHeight = frame.getHeight();
+        frameWidth = frame.getWidth();
+
+        box1Y = (frameHeight - box1Height)/2;
+        box2Y = (frameHeight - box2Height)/2;
+
+        box1.setY(box1Y);
+        box2.setY(box2Y);
+        ball.setBallX(frameWidth/2);
+        ball.setBallY(frameHeight/2);
+
+        ball.setXMin(Math.round(0)); // Défini la bordure de gauche à ne pas dépasser par la balle
+        ball.setYMin(Math.round(0)); // Défini la bordure du haut à ne pas dépasser par la balle
+        ball.setXMax(Math.round(frameWidth)); // Défini la bordure de droite à ne pas dépasser par la balle
+        ball.setYMax(Math.round(frameHeight)); // Défini la bordure du bas à ne pas dépasser par la balle
+
+        moveBoxes();
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    public void moveBoxes(){
+        frame.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getX() < frameWidth/2){
+                    box1Y = event.getY() - box1Height/2;
+                    if(event.getAction() == MotionEvent.ACTION_MOVE) {
+                        if(!(box1Y + box1Height > frameHeight) && !(box1Y < 0)){
+                            box1.setY(box1Y);
+                        }
+                    }
+                } else {
+                    box2Y = event.getY() - box2Height/2;
+                    if(event.getAction() == MotionEvent.ACTION_MOVE) {
+                        if(!(box2Y + box2Height > frameHeight) && !(box2Y < 0)){
+                            box2.setY(box2Y);
+                        }
+                    }
+                }
+                return true;
+            }
+        });
+    }
+
+    public static ImageView getBox1(){
+        return box1;
+    }
+
+    public static ImageView getBox2(){
+        return box2;
+    }
+
+    public static FrameLayout getFrame() {
+        return frame;
+    }
+
+    public static void setScoreLabel(String text){
+        scoreLabel.setText(text);
+    }
+
+    public static Button getStartBtn(){
+        return startBtn;
     }
 
 }
