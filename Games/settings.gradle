@@ -1,0 +1,8 @@
+include ':TicTacToeGame'
+include ':TicTacToeGame'
+include ':QuizzGame'
+include ':PingPongGame'
+include ':PenduGame'
+include ':BallGame'
+include ':Games'
+rootProject.name = "Games"
