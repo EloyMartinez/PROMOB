@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">PingPongGame</string>
-    <string name="play">Jouer</string>
-    <string name="replay">Rejouer</string>
-    <string name="win1">Joueur 1 a gagné !</string>
-    <string name="win2">Joueur 2 a gagné !</string>
-</resources>

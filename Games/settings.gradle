@@ -1,8 +1,2 @@
-include ':TicTacToeGame'
-include ':TicTacToeGame'
-include ':QuizzGame'
-include ':PingPongGame'
-include ':PenduGame'
-include ':BallGame'
-include ':Games'
+include ':app'
 rootProject.name = "Games"

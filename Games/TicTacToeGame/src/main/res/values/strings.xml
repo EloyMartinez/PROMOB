@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">TicTacToeGame</string>
-    <string name="player1">Joueur 1 :</string>
-    <string name="player2">Joueur 2 :</string>
-    <string name="reset">Recommencer</string>
-    <string name="player1Win">Joueur 1 a gagné !</string>
-    <string name="player2Win">Joueur 2 a gagné !</string>
-</resources>
