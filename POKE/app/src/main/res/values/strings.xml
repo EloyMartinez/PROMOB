@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">POKE</string>
+    <string name="create_group">CREATE GROUPE</string>
+    <string name="logging_in">LOGGING IN</string>
+    <string name="log_in">LOG IN</string>
 </resources>

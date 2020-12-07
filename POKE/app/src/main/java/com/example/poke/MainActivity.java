@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,66 +26,58 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference playerRef;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         editText = findViewById(R.id.editText);
         button = findViewById(R.id.button);
 
         database = FirebaseDatabase.getInstance();
 
-        SharedPreferences preferences = getSharedPreferences("PREFS",0);
-       // preferences.edit().remove("playerName").commit();    //// on enleve le nom de l'utilisateur de la memoire de l'apareil
+        SharedPreferences preferences = getSharedPreferences("PREFS", 0);
+        // preferences.edit().remove("playerName").commit();    //// on enleve le nom de l'utilisateur de la memoire de l'apareil
 
         playerName = preferences.getString("playerName", "");
-        if(!playerName.equals("")){
-            playerRef = database.getReference("Players/" + playerName);
+        if (!playerName.equals("")) {
+            playerRef = database.getReference("players/" + playerName);
             addEventListener();
             playerRef.setValue("");
         }
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                playerName = editText.getText().toString();
-                editText.setText("");
-                if(!playerName.equals("")){
-                    button.setText("LOGGIN IN");
-                    button.setEnabled(false);
-                    playerRef = database.getReference("Players/" + playerName);
-                    addEventListener();
-                    playerRef.setValue("");
-                }
+        button.setOnClickListener(v -> {
+            playerName = editText.getText().toString();
+            editText.setText("");
+            if (!playerName.equals("")) {
+                button.setText(R.string.logging_in);
+                button.setEnabled(false);
+                playerRef = database.getReference("players/" + playerName);
+                addEventListener();
+                playerRef.setValue("");
             }
         });
 
     }
 
-    private void addEventListener(){
+    private void addEventListener() {
         playerRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-            if(!playerName.equals("")){
-                SharedPreferences preferences = getSharedPreferences("PREPS",0);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putString("playerName",playerName);
-                editor.apply();
+                if (!playerName.equals("")) {
+                    SharedPreferences preferences = getSharedPreferences("PREPS", 0);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("playerName", playerName);
+                    editor.apply();
 
-                startActivity(new Intent(getApplicationContext(),MainActivity2.class));
-                finish();
-            }
+                    startActivity(new Intent(getApplicationContext(), MainActivity2.class));
+                    finish();
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                button.setText("LOG IN");
+                button.setText(R.string.log_in);
                 button.setEnabled(true);
                 Toast.makeText(MainActivity.this, "Err", Toast.LENGTH_SHORT).show();
             }
