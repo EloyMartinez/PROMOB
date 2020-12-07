@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (!playerName.equals("")) {
-                    SharedPreferences preferences = getSharedPreferences("PREPS", 0);
+                    SharedPreferences preferences = getSharedPreferences("PREFS", 0);
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("playerName", playerName);
                     editor.apply();
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 button.setText(R.string.log_in);
                 button.setEnabled(true);
-                Toast.makeText(MainActivity.this, "Err", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
             }
         });
     }

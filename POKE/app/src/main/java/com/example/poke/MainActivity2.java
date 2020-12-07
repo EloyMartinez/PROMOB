@@ -40,6 +40,7 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         database = FirebaseDatabase.getInstance();
+
         // Récupère le nom du joueur et assigne le nom du room au nom de joueur
         SharedPreferences preferences = getSharedPreferences("PREFS", 0);
         playerName = preferences.getString("playerName", "");
