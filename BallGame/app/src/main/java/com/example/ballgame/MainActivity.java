@@ -104,19 +104,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//        public void changePos(){
-//
-//        if(action_flg){
-//            //touching
-//            boxY-=20;
-//        }else{
-//            //releasing
-//            boxY+=20;
-//        }
-//            box.setY(boxY);
-//
-//        }
-
 
     public void changePos(){
 
@@ -313,23 +300,23 @@ public class MainActivity extends AppCompatActivity {
                     float deltaY = y2 - y1;
                     if ((deltaX) > MIN_DISTANCE)
                     {
-                        Toast.makeText(this, "left2right swipe", Toast.LENGTH_SHORT).show ();
+                        //Toast.makeText(this, "left2right swipe", Toast.LENGTH_SHORT).show ();
                         swipe = "r";
                     }
                     else if ((deltaX) < -MIN_DISTANCE)
                     {
-                        Toast.makeText(this, "right2left swipe", Toast.LENGTH_SHORT).show ();
+                        //Toast.makeText(this, "right2left swipe", Toast.LENGTH_SHORT).show ();
                         swipe = "l";
                     }
                     else if((deltaY) > MIN_DISTANCE)
                     {
-                        Toast.makeText(this, "up2down swipe", Toast.LENGTH_SHORT).show ();
+                        //Toast.makeText(this, "up2down swipe", Toast.LENGTH_SHORT).show ();
                         swipe = "u";
 
                     }
                     else if((deltaY) < -MIN_DISTANCE)
                     {
-                        Toast.makeText(this, "down2up swipe", Toast.LENGTH_SHORT).show ();
+                        //Toast.makeText(this, "down2up swipe", Toast.LENGTH_SHORT).show ();
                         swipe = "d";
 
                     }
