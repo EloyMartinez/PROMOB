@@ -66,6 +66,7 @@ public class MainActivity3 extends AppCompatActivity {
         message = role + ":Pokediinii!";
         messageRef.setValue(message);
         addRoomEventListener();
+
     }
 
     private void addRoomEventListener() {
