@@ -1,2 +1,0 @@
-# PROMOB
-PROMOB Android Games

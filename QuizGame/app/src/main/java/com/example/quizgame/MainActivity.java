@@ -172,6 +172,9 @@ public class MainActivity extends AppCompatActivity {
             editText.setText("");
             pressCounter=0;
             counter++;
+            if (counter==5){
+                counter =0;
+            }
             keys=keyset[counter];
             textAnswer=answerset[counter];
 

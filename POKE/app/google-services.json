@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "109975177964",
+    "project_id": "poke-f2a58",
+    "storage_bucket": "poke-f2a58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109975177964:android:4db436dbe8cc58496c73c9",
+        "android_client_info": {
+          "package_name": "com.example.poke"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "109975177964-r6fk5qh7uk4rcsfgg56hvvdd9rluqvbk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAywHtj1uRDaqYgOM_3Kq-_erVcAgnPuEA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "109975177964-r6fk5qh7uk4rcsfgg56hvvdd9rluqvbk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
