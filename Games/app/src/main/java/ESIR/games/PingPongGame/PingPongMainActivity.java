@@ -51,7 +51,7 @@ public class PingPongMainActivity extends AppCompatActivity implements View.OnCl
         frame = findViewById(R.id.frame);
         startBtn = findViewById(R.id.startBtn);
 
-        ball = new Ball(this);
+        ball = new Ball(this, getIntent());
 
         startBtn.setOnClickListener(this);
     }

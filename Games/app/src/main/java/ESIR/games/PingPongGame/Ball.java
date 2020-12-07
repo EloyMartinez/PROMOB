@@ -1,5 +1,6 @@
 package ESIR.games.PingPongGame;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -11,11 +12,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-
-import ESIR.games.BallGame.BallStarterActivity;
 import ESIR.games.FinalActivity;
 import ESIR.games.R;
 
+@SuppressLint("ViewConstructor")
 public class Ball extends View {
 
     private final ImageView box1 = PingPongMainActivity.getBox1();
@@ -23,6 +23,7 @@ public class Ball extends View {
     private final FrameLayout frame = PingPongMainActivity.getFrame();
 
     private final Context context;
+    private final Intent intent;
 
     private static int score1, score2;
     private int xMin, xMax, yMin, yMax;
@@ -34,9 +35,10 @@ public class Ball extends View {
     private static RectF ballBounds; // Nécessaire pour Canvas.drawOval
     private final Paint paint; // Couleur de la balle
 
-    public Ball(Context context) {
+    public Ball(Context context, Intent intent) {
         super(context);
         this.context = context;
+        this.intent = intent;
         ballBounds = new RectF();
         paint = new Paint();
 
@@ -149,11 +151,11 @@ public class Ball extends View {
             }
 
             builder.setPositiveButton(R.string.end, (dialog, which) -> {
-                Intent intent = new Intent(context.getApplicationContext(), FinalActivity.class);
-                System.out.println(getIntent().getIntExtra("score1", 0) + " - " + getIntent().getIntExtra("score2", 0));
-                intent.putExtra("score1", getIntent().getIntExtra("score1", 0));
-                intent.putExtra("score2", getIntent().getIntExtra("score2", 0));
-                context.startActivity(intent);
+                Intent intent1 = new Intent(context.getApplicationContext(), FinalActivity.class);
+                System.out.println(intent.getIntExtra("score1", 0) + " - " + intent.getIntExtra("score2", 0));
+                intent1.putExtra("score1", intent.getIntExtra("score1", 0));
+                intent1.putExtra("score2", intent.getIntExtra("score2", 0));
+                context.startActivity(intent1);
             });
 
             builder.create().show();
