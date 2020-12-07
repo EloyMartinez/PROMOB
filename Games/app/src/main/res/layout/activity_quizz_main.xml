@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
- <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="0/5"
+        android:text="@string/_0_5"
         android:textColor="#FFF"
         android:textSize="22sp" />
 
@@ -35,7 +34,7 @@
             android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="ANIMALS!\n(in english)"
+            android:text="@string/animals_in_english"
             android:textColor="#0295C3"
             android:textSize="26sp" />
 
@@ -54,9 +53,9 @@
           android:layout_width="200dp"
           android:layout_height="80dp"
           android:layout_gravity="center"
-          android:layout_marginLeft="80dp"
+          android:layout_marginStart="80dp"
           android:layout_marginTop="50dp"
-          android:layout_marginRight="20dp"
+          android:layout_marginEnd="20dp"
           android:layout_marginBottom="40dp"
           android:background="@drawable/square2"
           android:clickable="false"
@@ -64,26 +63,25 @@
           android:gravity="center"
           android:padding="10dp"
           android:textColor="#0295C3"
-          android:textSize="32sp" />
-
-
+          android:textSize="32sp"
+          tools:ignore="Autofill,LabelFor,TextFields" />
 
       <Button
           android:id="@+id/button_id"
           android:layout_width="60dp"
           android:layout_height="60dp"
           android:textColor="#0295C3"
-          android:textSize="10sp"
+          android:textSize="12sp"
           android:gravity="center"
           android:layout_marginTop="15dp"
           android:background="@drawable/buttons"
-          android:text="Reshuffle" />
+          android:text="@string/reshuffle" />
    </LinearLayout>
 
    <TextView
         android:layout_width="match_parent"
         android:id="@+id/textTitle"
-        android:text="Spell an animal!"
+        android:text="@string/spell_an_animal"
         android:textSize="24sp"
         android:textColor="#FFF"
         android:layout_marginRight="28dp"

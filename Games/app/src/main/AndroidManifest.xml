@@ -16,11 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ESIR.games.BallGame.BallMainActivity"/>
-        <activity android:name="ESIR.games.PenduGame.PenduMainActivity"/>
-        <activity android:name="ESIR.games.PingPongGame.PingPongMainActivity"/>
-        <activity android:name="ESIR.games.QuizzGame.QuizzMainActivity"/>
-        <activity android:name="ESIR.games.TicTacToeGame.TicTacToeMainActivity"/>
+        <activity android:name="ESIR.games.BallGame.BallStarterActivity" />
+        <activity android:name="ESIR.games.BallGame.BallMainActivity" />
+        <activity android:name="ESIR.games.BallGame.BallResultActivity" />
+        <activity android:name="ESIR.games.PenduGame.PenduMainActivity" />
+        <activity android:name="ESIR.games.PingPongGame.PingPongMainActivity" />
+        <activity android:name="ESIR.games.QuizzGame.QuizzStarterActivity" />
+        <activity android:name="ESIR.games.QuizzGame.QuizzMainActivity" />
+        <activity android:name="ESIR.games.TicTacToeGame.TicTacToeMainActivity" />
+        <activity android:name="ESIR.games.FinalActivity" />
     </application>
 
 </manifest>

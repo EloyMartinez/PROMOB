@@ -98,26 +98,23 @@ public class PingPongMainActivity extends AppCompatActivity implements View.OnCl
 
     @SuppressLint("ClickableViewAccessibility")
     public void moveBoxes(){
-        frame.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if(event.getX() < frameWidth/2){
-                    box1Y = event.getY() - box1Height/2;
-                    if(event.getAction() == MotionEvent.ACTION_MOVE) {
-                        if(box1Y + box1Height <= frameHeight && box1Y >= 0){
-                            box1.setY(Math.round(box1Y));
-                        }
-                    }
-                } else {
-                    box2Y = event.getY() - box2Height/2;
-                    if(event.getAction() == MotionEvent.ACTION_MOVE) {
-                        if(box2Y + box2Height <= frameHeight && box2Y >= 0){
-                            box2.setY(Math.round(box2Y));
-                        }
+        frame.setOnTouchListener((v, event) -> {
+            if(event.getX() < frameWidth/2){
+                box1Y = event.getY() - box1Height/2;
+                if(event.getAction() == MotionEvent.ACTION_MOVE) {
+                    if(box1Y + box1Height <= frameHeight && box1Y >= 0){
+                        box1.setY(Math.round(box1Y));
                     }
                 }
-                return true;
+            } else {
+                box2Y = event.getY() - box2Height/2;
+                if(event.getAction() == MotionEvent.ACTION_MOVE) {
+                    if(box2Y + box2Height <= frameHeight && box2Y >= 0){
+                        box2.setY(Math.round(box2Y));
+                    }
+                }
             }
+            return true;
         });
     }
 

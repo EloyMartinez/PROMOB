@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class StarterActivity extends AppCompatActivity {
+public class QuizzStarterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,10 @@ public class StarterActivity extends AppCompatActivity {
 
 
     public void start(){
-        startActivity(new Intent(getApplicationContext(), QuizzMainActivity.class));
+        Intent intent = new Intent(getApplicationContext(), QuizzMainActivity.class);
+        System.out.println(getIntent().getIntExtra("score1", 0) + " - " + getIntent().getIntExtra("score2", 0));
+        intent.putExtra("score1", getIntent().getIntExtra("score1", 0));
+        intent.putExtra("score2", getIntent().getIntExtra("score2", 0));
+        startActivity(intent);
     }
 }
