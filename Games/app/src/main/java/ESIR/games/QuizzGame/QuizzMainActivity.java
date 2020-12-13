@@ -83,10 +83,10 @@ public class QuizzMainActivity extends AppCompatActivity {
 
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/FredokaOneRegular.ttf");
 
-        textQuestion = (TextView) findViewById(R.id.textQuestion);
-        textScreen = (TextView) findViewById(R.id.textScreen);
-        textTitle = (TextView) findViewById(R.id.textTitle);
-        delButton = (Button) findViewById(R.id.button_id);
+        textQuestion = findViewById(R.id.textQuestion);
+        textScreen = findViewById(R.id.textScreen);
+        textTitle = findViewById(R.id.textTitle);
+        delButton = findViewById(R.id.button_id);
 
         textQuestion.setTypeface(typeface);
         textScreen.setTypeface(typeface);

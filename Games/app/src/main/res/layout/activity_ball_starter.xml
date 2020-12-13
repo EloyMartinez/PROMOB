@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StarterActivity"
+    tools:context=".BallGame.BallStarterActivity"
     android:orientation="vertical"
     android:gravity="center">
     
@@ -24,17 +23,20 @@
             android:paddingTop="10sp"
             android:gravity="center"
             android:orientation="vertical">
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/pink"/>
+                android:src="@drawable/pink"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100 points"
+                android:text="@string/_100_points"
                 android:textSize="18sp"
-                android:paddingLeft="10dp"></TextView>
-
+                android:paddingStart="10dp"
+                tools:ignore="RtlSymmetry" />
 
         </TableRow>
 
@@ -42,17 +44,20 @@
             android:paddingTop="10sp"
             android:gravity="center"
             android:orientation="vertical">
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/orange"/>
+                android:src="@drawable/orange"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10 points"
+                android:text="@string/_10_points"
                 android:textSize="18sp"
-                android:paddingLeft="10dp"></TextView>
-
+                android:paddingStart="10dp"
+                tools:ignore="RtlSymmetry" />
 
         </TableRow>
 
@@ -60,17 +65,20 @@
             android:paddingTop="10sp"
             android:gravity="center"
             android:orientation="vertical">
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/red"/>
+                android:src="@drawable/red"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-100 points"
+                android:text="@string/_100_points"
                 android:textSize="18sp"
-                android:paddingLeft="10dp"></TextView>
-
+                android:paddingStart="10dp"
+                tools:ignore="RtlSymmetry" />
 
         </TableRow>
 
@@ -78,31 +86,30 @@
             android:paddingTop="10sp"
             android:gravity="center"
             android:orientation="vertical">
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/black"/>
+                android:src="@drawable/black"
+                tools:ignore="ContentDescription" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="game over"
+                android:text="@string/game_over"
                 android:textSize="18sp"
-                android:paddingLeft="10dp"></TextView>
-
+                android:paddingStart="10dp"
+                tools:ignore="RtlSymmetry" />
 
         </TableRow>
+
     </TableLayout>
 
     <Button
         android:id="@+id/button_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start"
+        android:text="@string/start"
         android:layout_marginTop="50dp" />
-
-
-
-
-    
 
 </LinearLayout>

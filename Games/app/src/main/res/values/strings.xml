@@ -18,4 +18,10 @@
     <string name="game_over">GAME OVER</string>
     <string name="next_game">Jeu suivant</string>
     <string name="end">Aller aux résultats finaux</string>
+    <string name="start">START</string>
+    <string name="quizz_start_message">We are going to give you a set of letters, within these letters lies an answer. Good luck!</string>
+    <string name="_10_points">10 points</string>
+    <string name="_n100_points">-100 points</string>
+    <string name="_100_points">100 points</string>
+    <string name="_">_</string>
 </resources>

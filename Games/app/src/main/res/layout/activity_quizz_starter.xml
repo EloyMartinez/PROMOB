@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".starterActivity"
+    tools:context=".QuizzGame.QuizzStarterActivity"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#FFFFFF"
-    >
+    android:background="#FFFFFF">
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,14 +20,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:textColor="@color/colorBlue"
-        android:text="We are going to give you a set of letters, within these letters lies an answer. Good luck!"
-        ></TextView>
+        android:text="@string/quizz_start_message" />
 
 
 
-    <Button
+    <android.widget.Button
         android:id="@+id/button_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,8 +35,7 @@
         android:gravity="center"
         android:layout_marginTop="15dp"
         android:background="@drawable/but"
-        android:text="START"
-        />
+        android:text="@string/start" />
 
 
 
