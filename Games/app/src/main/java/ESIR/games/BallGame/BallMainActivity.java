@@ -209,10 +209,13 @@ public class BallMainActivity extends AppCompatActivity {
             timer.cancel();
             timer = null;
 
+            int score1 = getIntent().getIntExtra("score1", 0) + score;
+            int score2 = getIntent().getIntExtra("score2", 0);
             Intent intent = new Intent(this, BallResultActivity.class);
-            System.out.println(getIntent().getIntExtra("score1", 0) + " - " + getIntent().getIntExtra("score2", 0));
-            intent.putExtra("score1", getIntent().getIntExtra("score1", 0));
-            intent.putExtra("score2", getIntent().getIntExtra("score2", 0));
+            System.out.println(score1 + " - " + score2);
+            intent.putExtra("SCORE", score);
+            intent.putExtra("score1", score1);
+            intent.putExtra("score2", score2);
             startActivity(intent);
         }
 

@@ -16,5 +16,8 @@ public class FinalActivity extends AppCompatActivity {
 
         score1 = findViewById(R.id.score1);
         score2 = findViewById(R.id.score2);
+
+        score1.setText(getIntent().getIntExtra("score1", 0));
+        score2.setText(getIntent().getIntExtra("score2", 0));
     }
 }

@@ -151,10 +151,12 @@ public class Ball extends View {
             }
 
             builder.setPositiveButton(R.string.end, (dialog, which) -> {
+                int score1 = intent.getIntExtra("score1", 0) + Ball.score1 * 50;
+                int score2 = intent.getIntExtra("score2", 0) + Ball.score2 * 50;
                 Intent intent1 = new Intent(context.getApplicationContext(), FinalActivity.class);
-                System.out.println(intent.getIntExtra("score1", 0) + " - " + intent.getIntExtra("score2", 0));
-                intent1.putExtra("score1", intent.getIntExtra("score1", 0));
-                intent1.putExtra("score2", intent.getIntExtra("score2", 0));
+                System.out.println(score1 + " - " + score2);
+                intent1.putExtra("score1", score1);
+                intent1.putExtra("score2", score2);
                 context.startActivity(intent1);
             });
 
