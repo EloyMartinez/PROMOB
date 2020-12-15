@@ -50,8 +50,8 @@ public class Ball extends View {
         score1 = 0;
         score2 = 0;
 
-        ballSpeedX = 20 + Math.round(Math.random() * 20);
-        ballSpeedY = 10 + Math.round(Math.random() * 10);
+        ballSpeedX = 5 + Math.round(Math.random() * 5);
+        ballSpeedY = 2 + Math.round(Math.random() * 2);
         if (Math.random() < 0.5) { // Sens de départ au hasard
             ballSpeedX = -ballSpeedX;
             ballSpeedY = -ballSpeedY;
@@ -74,7 +74,7 @@ public class Ball extends View {
 
         // Délai
         try {
-            Thread.sleep(20);
+            Thread.sleep(3);
         } catch (InterruptedException ignored) {
         }
 
@@ -113,7 +113,7 @@ public class Ball extends View {
         endGame();
     }
 
-    public void touchBoxes() {
+    public void touchBoxes() { // Faire avec un boolean pour être utilisé dans goal
         int[] location1 = new int[2];
         box1.getLocationOnScreen(location1);
         int[] location2 = new int[2];
@@ -122,10 +122,10 @@ public class Ball extends View {
         float box1Height = Math.round(box2.getHeight());
         float box2Height = Math.round(box2.getHeight());
 
-        if (((box2.getLeft() - ballBounds.right) < 10) && ((location2[1] - box2Height / 2) <= ballBounds.top)
+        if (((box2.getLeft() - ballBounds.right) < 0) && ((location2[1] - box2Height / 2) <= ballBounds.top)
                 && ((location2[1] + box2Height / 2) >= ballBounds.bottom)) {
             setXMax(Math.round(box2.getLeft()));
-        } else if (((ballBounds.left - box1.getRight()) < 10) && ((location1[1] - box1Height / 2) <= ballBounds.top)
+        } else if (((ballBounds.left - box1.getRight()) < 0) && ((location1[1] - box1Height / 2) <= ballBounds.top)
                 && ((location1[1] + box1Height / 2) >= ballBounds.bottom)) {
             setXMin(Math.round(box1.getRight()));
         }
