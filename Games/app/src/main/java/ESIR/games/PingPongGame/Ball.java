@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+
 import ESIR.games.FinalActivity;
 import ESIR.games.R;
 
@@ -151,8 +152,8 @@ public class Ball extends View {
             }
 
             builder.setPositiveButton(R.string.end, (dialog, which) -> {
-                int score1 = intent.getIntExtra("score1", 0) + Ball.score1 * 50;
-                int score2 = intent.getIntExtra("score2", 0) + Ball.score2 * 50;
+                int score1 = intent.getIntExtra("score1", 0) + (Ball.score1 - Ball.score2) * 100;
+                int score2 = intent.getIntExtra("score2", 0) + Ball.score2;
                 Intent intent1 = new Intent(context.getApplicationContext(), FinalActivity.class);
                 System.out.println(score1 + " - " + score2);
                 intent1.putExtra("score1", score1);
