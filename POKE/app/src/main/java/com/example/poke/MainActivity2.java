@@ -6,9 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -43,45 +40,41 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         database = FirebaseDatabase.getInstance();
-        ///recupere le nom du joueur et assigne le noom du room au nom de joueur
+
+        // Récupère le nom du joueur et assigne le nom du room au nom de joueur
         SharedPreferences preferences = getSharedPreferences("PREFS", 0);
         playerName = preferences.getString("playerName", "");
         roomName = playerName;
 
 
         listView = findViewById(R.id.listView);
-        button= findViewById(R.id.button);
+        button = findViewById(R.id.button);
         roomsList = new ArrayList<>();
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                button.setEnabled(false);
-                roomName=playerName;
-                roomRef=database.getReference("rooms/"+roomName+"/player1");
+        button.setOnClickListener(v -> {
+            button.setEnabled(false);
+            roomName = playerName;
+            roomRef = database.getReference("rooms/" + roomName + "/player1");
 
-                addRoomEventListener();
-                roomRef.setValue(playerName);
-            }
+            addRoomEventListener();
+            roomRef.setValue(playerName);
         });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                roomName=roomsList.get(position);
-                roomRef=database.getReference("rooms/"+roomName+"/player2");
-                addRoomEventListener();
-                roomRef.setValue(playerName);
-            }
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            roomName = roomsList.get(position);
+            roomRef = database.getReference("rooms/" + roomName + "/player2");
+            addRoomEventListener();
+            roomRef.setValue(playerName);
         });
         addRoomsEventListener();
     }
-    private void addRoomEventListener(){
+
+    private void addRoomEventListener() {
         roomRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 button.setEnabled(true);
-                button.setText("CREATE GROUPE");
-                Intent intent = new Intent(getApplicationContext(),MainActivity3.class);
-                intent.putExtra("roomName",roomName);
+                button.setText(R.string.create_group);
+                Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                intent.putExtra("roomName", roomName);
                 startActivity(intent);
             }
 
@@ -91,16 +84,17 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
     }
-    private void addRoomsEventListener(){
-        roomsRef=database.getReference("rooms");
+
+    private void addRoomsEventListener() {
+        roomsRef = database.getReference("rooms");
         roomsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 roomsList.clear();
                 Iterable<DataSnapshot> rooms = snapshot.getChildren();
-                for(DataSnapshot snapshots: rooms) {
+                for (DataSnapshot snapshots : rooms) {
                     roomsList.add(snapshots.getKey());
-                    ArrayAdapter<String> adapter =new ArrayAdapter<>(MainActivity2.this, android.R.layout.simple_list_item_1,roomsList);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity2.this, android.R.layout.simple_list_item_1, roomsList);
                     listView.setAdapter(adapter);
                 }
             }
@@ -110,4 +104,5 @@ public class MainActivity2 extends AppCompatActivity {
 
             }
         });
-    }}
+    }
+}

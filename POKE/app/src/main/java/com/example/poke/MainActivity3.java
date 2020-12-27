@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -14,6 +13,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class MainActivity3 extends AppCompatActivity {
 
@@ -26,7 +27,6 @@ public class MainActivity3 extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference messageRef;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,18 +51,14 @@ public class MainActivity3 extends AppCompatActivity {
             }
         }
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //send message
-                button.setEnabled(false);
-                message = role + ":Poked!";
-                messageRef.setValue(message);
-
-            }
+        button.setOnClickListener(v -> {
+            //send message
+            button.setEnabled(false);
+            message = role + ":Poked!";
+            messageRef.setValue(message);
         });
         //listen for incoming messages
-        messageRef=database.getReference("rooms/"+roomName+"/messageinni");  /// ERROR COMES FROM HERE
+        messageRef = database.getReference("rooms/" + roomName + "/messageinni");  /// ERROR COMES FROM HERE
         message = role + ":Pokediinii!";
         messageRef.setValue(message);
         addRoomEventListener();
@@ -74,14 +70,14 @@ public class MainActivity3 extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (role.equals("host")) {
-                    if (snapshot.getValue(String.class).contains("guest:")) {
+                    if (Objects.requireNonNull(snapshot.getValue(String.class)).contains("guest:")) {
                         button.setEnabled(true);
-                        Toast.makeText(MainActivity3.this, snapshot.getValue(String.class).replace("guest:", ""), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity3.this, Objects.requireNonNull(snapshot.getValue(String.class)).replace("guest:", ""), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    if (snapshot.getValue(String.class).contains("host:")) {
+                    if (Objects.requireNonNull(snapshot.getValue(String.class)).contains("host:")) {
                         button.setEnabled(true);
-                        Toast.makeText(MainActivity3.this, snapshot.getValue(String.class).replace("host:", ""), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity3.this, Objects.requireNonNull(snapshot.getValue(String.class)).replace("host:", ""), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
