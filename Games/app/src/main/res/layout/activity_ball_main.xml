@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/black"
     tools:context=".MainActivity"
     android:orientation="vertical">
 
@@ -26,6 +27,7 @@
             android:layout_height="wrap_content"
             android:text="Tap to Start"
             android:textSize="24sp"
+            android:textColor="@android:color/white"
             android:layout_gravity="center"/>
 
         <ImageView
