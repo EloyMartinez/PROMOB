@@ -1,8 +1,10 @@
 package ESIR.games.QuizzGame;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,10 +41,12 @@ public class QuizzMainActivity extends AppCompatActivity {
     private final String[] answerset = {dog, horse, fish, bird, pig};
     private int counter = 0;
     private final int maxCounter = 5;
+    private long startTime = 0;
+    private int seconds;
+    private int minutes;
 
-    TextView textScreen, textQuestion, textTitle;
+    TextView textScreen, textQuestion, textTitle, timerTextView;
     Button delButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,7 @@ public class QuizzMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quizz_main);
         keys = keyset[counter];
         textAnswer = answerset[counter];
+        timerTextView = (TextView) findViewById(R.id.timer);
 
         keys = shuffleArray(keys);
 
@@ -64,6 +69,31 @@ public class QuizzMainActivity extends AppCompatActivity {
                 addView(linearLayout2, key, editText);
             }
         }
+
+        startTime = System.currentTimeMillis();
+        timerHandler.postDelayed(timerRunnable, 0);
+    }
+
+    Handler timerHandler = new Handler();
+    Runnable timerRunnable = new Runnable() {
+        @SuppressLint("DefaultLocale")
+        @Override
+        public void run() {
+            long millis = System.currentTimeMillis() - startTime;
+            seconds = (int) (millis / 1000);
+            minutes = seconds / 60;
+            seconds = seconds % 60;
+
+            timerTextView.setText(String.format("%d:%02d", minutes, seconds));
+
+            timerHandler.postDelayed(this, 500);
+        }
+    };
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        timerHandler.removeCallbacks(timerRunnable);
     }
 
     private void addView(LinearLayout viewParent, final String text, final EditText editText) {
@@ -83,10 +113,10 @@ public class QuizzMainActivity extends AppCompatActivity {
 
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/FredokaOneRegular.ttf");
 
-        textQuestion = (TextView) findViewById(R.id.textQuestion);
-        textScreen = (TextView) findViewById(R.id.textScreen);
-        textTitle = (TextView) findViewById(R.id.textTitle);
-        delButton = (Button) findViewById(R.id.button_id);
+        textQuestion = findViewById(R.id.textQuestion);
+        textScreen = findViewById(R.id.textScreen);
+        textTitle = findViewById(R.id.textTitle);
+        delButton = findViewById(R.id.button_id);
 
         textQuestion.setTypeface(typeface);
         textScreen.setTypeface(typeface);
@@ -229,10 +259,36 @@ public class QuizzMainActivity extends AppCompatActivity {
     }
 
     private void endGame() {
+        int score1 = getIntent().getIntExtra("score1", 0);
+        int score2 = getIntent().getIntExtra("score2", 0);
+        switch (minutes) {
+            case 0:
+                if(seconds < 30) {
+                    score1 += 750;
+                } else {
+                    score1 += 500;
+                }
+                break;
+            case 1:
+                if(seconds < 30) {
+                    score1 += 400;
+                } else {
+                    score1 += 250;
+                }
+                break;
+            case 2:
+                if(seconds < 30) {
+                    score1 += 100;
+                }
+                break;
+            default:
+                break;
+        }
+
         Intent intent = new Intent(getApplicationContext(), BallStarterActivity.class);
-        System.out.println(getIntent().getIntExtra("score1", 0) + " - " + getIntent().getIntExtra("score2", 0));
-        intent.putExtra("score1", getIntent().getIntExtra("score1", 0));
-        intent.putExtra("score2", getIntent().getIntExtra("score2", 0));
+        System.out.println(score1 + " - " + score2);
+        intent.putExtra("score1", score1);
+        intent.putExtra("score2", score2);
         startActivity(intent);
     }
 

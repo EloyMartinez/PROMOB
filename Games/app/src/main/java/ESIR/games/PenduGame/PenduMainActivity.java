@@ -4,7 +4,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import ESIR.games.R;
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -201,12 +200,7 @@ public class PenduMainActivity extends AppCompatActivity implements View.OnClick
             builder.setTitle("Vous avez perdu...");
             builder.setMessage("Le mot à trouver était : " + word);
         }
-        builder.setPositiveButton(R.string.replay, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                initGame();
-            }
-        });
+        builder.setPositiveButton(R.string.replay, (dialog, which) -> initGame());
 
         builder.create().show();
     }

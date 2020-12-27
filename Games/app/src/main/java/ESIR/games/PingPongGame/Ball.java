@@ -1,5 +1,6 @@
 package ESIR.games.PingPongGame;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -12,10 +13,10 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import ESIR.games.BallGame.BallStarterActivity;
 import ESIR.games.FinalActivity;
 import ESIR.games.R;
 
+@SuppressLint("ViewConstructor")
 public class Ball extends View {
 
     private final ImageView box1 = PingPongMainActivity.getBox1();
@@ -23,6 +24,7 @@ public class Ball extends View {
     private final FrameLayout frame = PingPongMainActivity.getFrame();
 
     private final Context context;
+    private final Intent intent;
 
     private static int score1, score2;
     private int xMin, xMax, yMin, yMax;
@@ -34,9 +36,10 @@ public class Ball extends View {
     private static RectF ballBounds; // Nécessaire pour Canvas.drawOval
     private final Paint paint; // Couleur de la balle
 
-    public Ball(Context context) {
+    public Ball(Context context, Intent intent) {
         super(context);
         this.context = context;
+        this.intent = intent;
         ballBounds = new RectF();
         paint = new Paint();
 
@@ -47,8 +50,8 @@ public class Ball extends View {
         score1 = 0;
         score2 = 0;
 
-        ballSpeedX = 20 + Math.round(Math.random() * 20);
-        ballSpeedY = 10 + Math.round(Math.random() * 10);
+        ballSpeedX = 5 + Math.round(Math.random() * 5);
+        ballSpeedY = 2 + Math.round(Math.random() * 2);
         if (Math.random() < 0.5) { // Sens de départ au hasard
             ballSpeedX = -ballSpeedX;
             ballSpeedY = -ballSpeedY;
@@ -71,7 +74,7 @@ public class Ball extends View {
 
         // Délai
         try {
-            Thread.sleep(20);
+            Thread.sleep(3);
         } catch (InterruptedException ignored) {
         }
 
@@ -110,7 +113,7 @@ public class Ball extends View {
         endGame();
     }
 
-    public void touchBoxes() {
+    public void touchBoxes() { // Faire avec un boolean pour être utilisé dans goal
         int[] location1 = new int[2];
         box1.getLocationOnScreen(location1);
         int[] location2 = new int[2];
@@ -119,10 +122,10 @@ public class Ball extends View {
         float box1Height = Math.round(box2.getHeight());
         float box2Height = Math.round(box2.getHeight());
 
-        if (((box2.getLeft() - ballBounds.right) < 10) && ((location2[1] - box2Height / 2) <= ballBounds.top)
+        if (((box2.getLeft() - ballBounds.right) < 0) && ((location2[1] - box2Height / 2) <= ballBounds.top)
                 && ((location2[1] + box2Height / 2) >= ballBounds.bottom)) {
             setXMax(Math.round(box2.getLeft()));
-        } else if (((ballBounds.left - box1.getRight()) < 10) && ((location1[1] - box1Height / 2) <= ballBounds.top)
+        } else if (((ballBounds.left - box1.getRight()) < 0) && ((location1[1] - box1Height / 2) <= ballBounds.top)
                 && ((location1[1] + box1Height / 2) >= ballBounds.bottom)) {
             setXMin(Math.round(box1.getRight()));
         }
@@ -149,11 +152,13 @@ public class Ball extends View {
             }
 
             builder.setPositiveButton(R.string.end, (dialog, which) -> {
-                Intent intent = new Intent(context.getApplicationContext(), FinalActivity.class);
-                System.out.println(getIntent().getIntExtra("score1", 0) + " - " + getIntent().getIntExtra("score2", 0));
-                intent.putExtra("score1", getIntent().getIntExtra("score1", 0));
-                intent.putExtra("score2", getIntent().getIntExtra("score2", 0));
-                context.startActivity(intent);
+                int score1 = intent.getIntExtra("score1", 0) + (Ball.score1 - Ball.score2) * 100;
+                int score2 = intent.getIntExtra("score2", 0) + Ball.score2;
+                Intent intent1 = new Intent(context.getApplicationContext(), FinalActivity.class);
+                System.out.println(score1 + " - " + score2);
+                intent1.putExtra("score1", score1);
+                intent1.putExtra("score2", score2);
+                context.startActivity(intent1);
             });
 
             builder.create().show();

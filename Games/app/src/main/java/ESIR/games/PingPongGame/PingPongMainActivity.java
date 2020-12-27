@@ -1,7 +1,9 @@
 package ESIR.games.PingPongGame;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import ESIR.games.R;
+
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
@@ -17,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 @SuppressLint("StaticFieldLeak")
-public class PingPongMainActivity extends AppCompatActivity implements View.OnClickListener, SensorEventListener{
+public class PingPongMainActivity extends AppCompatActivity implements View.OnClickListener, SensorEventListener {
 
     // Elements
     private static TextView scoreLabel;
@@ -51,7 +53,7 @@ public class PingPongMainActivity extends AppCompatActivity implements View.OnCl
         frame = findViewById(R.id.frame);
         startBtn = findViewById(R.id.startBtn);
 
-        ball = new Ball(this);
+        ball = new Ball(this, getIntent());
 
         startBtn.setOnClickListener(this);
     }
@@ -68,13 +70,13 @@ public class PingPongMainActivity extends AppCompatActivity implements View.OnCl
         frameHeight = frame.getHeight();
         frameWidth = frame.getWidth();
 
-        box1Y = Math.round((frameHeight - box1Height)/2);
-        box2Y = Math.round((frameHeight - box2Height)/2);
+        box1Y = Math.round((frameHeight - box1Height) / 2);
+        box2Y = Math.round((frameHeight - box2Height) / 2);
 
         box1.setY(Math.round(box1Y));
         box2.setY(Math.round(box2Y));
-        ball.setBallX(Math.round(frameWidth/2));
-        ball.setBallY(Math.round(frameHeight/2));
+        ball.setBallX(Math.round(frameWidth / 2));
+        ball.setBallY(Math.round(frameHeight / 2));
 
         ball.setXMin(Math.round(0)); // Défini la bordure de gauche à ne pas dépasser par la balle
         ball.setYMin(Math.round(0)); // Défini la bordure du haut à ne pas dépasser par la balle
@@ -87,9 +89,9 @@ public class PingPongMainActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onSensorChanged(SensorEvent event) {
         double incline = event.values[2];
-        incline -= 22*incline/100; // Pour ne pas sortir de la frame (inconvénient : ralentit quand on approche des bords)
-        box1Y = frameHeight/2 - (incline*frameHeight)/(9.81*2);
-        box1.setY(Math.round(box1Y - box1Height/2));
+        incline -= 22 * incline / 100; // Pour ne pas sortir de la frame (inconvénient : ralentit quand on approche des bords)
+        box1Y = frameHeight / 2 - (incline * frameHeight) / (9.81 * 2);
+        box1.setY(Math.round(box1Y - box1Height / 2));
     }
 
     @Override
@@ -97,19 +99,19 @@ public class PingPongMainActivity extends AppCompatActivity implements View.OnCl
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    public void moveBoxes(){
+    public void moveBoxes() {
         frame.setOnTouchListener((v, event) -> {
-            if(event.getX() < frameWidth/2){
-                box1Y = event.getY() - box1Height/2;
-                if(event.getAction() == MotionEvent.ACTION_MOVE) {
-                    if(box1Y + box1Height <= frameHeight && box1Y >= 0){
+            if (event.getX() < frameWidth / 2) {
+                box1Y = event.getY() - box1Height / 2;
+                if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                    if (box1Y + box1Height <= frameHeight && box1Y >= 0) {
                         box1.setY(Math.round(box1Y));
                     }
                 }
             } else {
-                box2Y = event.getY() - box2Height/2;
-                if(event.getAction() == MotionEvent.ACTION_MOVE) {
-                    if(box2Y + box2Height <= frameHeight && box2Y >= 0){
+                box2Y = event.getY() - box2Height / 2;
+                if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                    if (box2Y + box2Height <= frameHeight && box2Y >= 0) {
                         box2.setY(Math.round(box2Y));
                     }
                 }
@@ -118,11 +120,11 @@ public class PingPongMainActivity extends AppCompatActivity implements View.OnCl
         });
     }
 
-    public static ImageView getBox1(){
+    public static ImageView getBox1() {
         return box1;
     }
 
-    public static ImageView getBox2(){
+    public static ImageView getBox2() {
         return box2;
     }
 
@@ -130,11 +132,11 @@ public class PingPongMainActivity extends AppCompatActivity implements View.OnCl
         return frame;
     }
 
-    public static void setScoreLabel(String text){
+    public static void setScoreLabel(String text) {
         scoreLabel.setText(text);
     }
 
-    public static Button getStartBtn(){
+    public static Button getStartBtn() {
         return startBtn;
     }
 

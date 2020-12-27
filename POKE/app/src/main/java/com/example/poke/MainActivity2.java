@@ -46,7 +46,6 @@ public class MainActivity2 extends AppCompatActivity {
         playerName = preferences.getString("playerName", "");
         roomName = playerName;
 
-
         listView = findViewById(R.id.listView);
         button = findViewById(R.id.button);
         roomsList = new ArrayList<>();

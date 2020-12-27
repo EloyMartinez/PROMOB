@@ -8,8 +8,16 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        tools:ignore="RelativeOverlap" />
+
+    <TextView
         android:id="@+id/textScreen"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="35dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -19,32 +27,31 @@
 
     <LinearLayout
         android:layout_width="290dp"
+        android:layout_height="150dp"
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/square"
-        android:orientation="vertical"
         android:gravity="center"
-        android:layout_height="150dp">
+        android:orientation="vertical">
 
         <TextView
-            android:textAlignment="center"
             android:id="@+id/textQuestion"
             android:layout_width="220dp"
-            android:lineSpacingExtra="6dp"
-            android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:gravity="center"
+            android:lineSpacingExtra="6dp"
             android:text="@string/animals_in_english"
+            android:textAlignment="center"
             android:textColor="#0295C3"
             android:textSize="26sp" />
 
     </LinearLayout>
 
-   <LinearLayout
+    <LinearLayout
        android:layout_width="400dp"
        android:layout_height="150dp"
        android:layout_gravity="center"
-       android:layout_marginTop="30dp"
        android:gravity="center"
        android:orientation="horizontal">
 
@@ -66,16 +73,17 @@
           android:textSize="32sp"
           tools:ignore="Autofill,LabelFor,TextFields" />
 
-      <Button
+      <android.widget.Button
           android:id="@+id/button_id"
-          android:layout_width="60dp"
-          android:layout_height="60dp"
+          android:layout_width="70dp"
+          android:layout_height="wrap_content"
           android:textColor="#0295C3"
           android:textSize="12sp"
           android:gravity="center"
           android:layout_marginTop="15dp"
           android:background="@drawable/buttons"
           android:text="@string/reshuffle" />
+
    </LinearLayout>
 
    <TextView
