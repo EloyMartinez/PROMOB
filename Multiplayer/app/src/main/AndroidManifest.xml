@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-    <uses-feature android:name="android.hardware.type.watch" />
 
     <application
         android:allowBackup="true"
@@ -13,22 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Games">
-        <activity android:name=".Multiplayer.MultiResult"></activity>
         <activity android:name=".Multiplayer.MultiRooms" />
-        <activity android:name=".Multiplayer.MultiSetUp" />
 
-        <uses-library
-            android:name="com.google.android.wearable"
-            android:required="true" />
-        <!--
-               Set to true if your app is Standalone, that is, it does not require the handheld
-               app to run.
-        -->
         <meta-data
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".Multiplayer.MultiSetUp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -44,6 +34,8 @@
         <activity android:name=".QuizzGame.QuizzMainActivity" />
         <activity android:name=".TicTacToeGame.TicTacToeMainActivity" />
         <activity android:name=".FinalActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Multiplayer.MultiResult"/>
     </application>
 
 </manifest>

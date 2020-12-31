@@ -20,6 +20,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import ESIR.games.FinalActivity;
+import ESIR.games.MainActivity;
 import ESIR.games.R;
 
 public class MultiRooms extends AppCompatActivity {
@@ -74,8 +76,11 @@ public class MultiRooms extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 button.setEnabled(true);
                 button.setText(R.string.create_group);
-                Intent intent = new Intent(getApplicationContext(), MultiResult.class);
-                intent.putExtra("roomName", roomName);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                SharedPreferences preferences = getSharedPreferences("PREFS", 0);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("roomName", roomName);
+                editor.apply();
                 startActivity(intent);
             }
 

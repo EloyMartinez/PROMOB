@@ -14,6 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import ESIR.games.FinalActivity;
+import ESIR.games.Multiplayer.MultiResult;
 import ESIR.games.R;
 
 @SuppressLint("ViewConstructor")
@@ -141,11 +142,11 @@ public class Ball extends View {
     }
 
     public void endGame() {
-        if (score1 == 11 || score2 == 11) {
+        if (score1 == 1 || score2 == 1) {
             frame.removeView(this);
 
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            if (score1 == 11) {
+            if (score1 == 1) {
                 builder.setTitle(R.string.win1);
             } else {
                 builder.setTitle(R.string.win2);

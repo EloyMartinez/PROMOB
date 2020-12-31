@@ -63,31 +63,31 @@ public class MultiResult extends AppCompatActivity {
         messageRef = database.getReference("rooms/" + roomName + "/messageinni");
         message = role + ":Pokediinii!";
         messageRef.setValue(message);
-        addRoomEventListener();
+       // addRoomEventListener();
 
     }
-
-    private void addRoomEventListener() {
-        messageRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (role.equals("host")) {
-                    if (Objects.requireNonNull(snapshot.getValue(String.class)).contains("guest:")) {
-                        button.setEnabled(true);
-                        Toast.makeText(MultiResult.this, Objects.requireNonNull(snapshot.getValue(String.class)).replace("guest:", ""), Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    if (Objects.requireNonNull(snapshot.getValue(String.class)).contains("host:")) {
-                        button.setEnabled(true);
-                        Toast.makeText(MultiResult.this, Objects.requireNonNull(snapshot.getValue(String.class)).replace("host:", ""), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                messageRef.setValue(message);
-            }
-        });
-    }
+//
+//    private void addRoomEventListener() {
+//        messageRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (role.equals("host")) {
+//                    if (Objects.requireNonNull(snapshot.getValue(String.class)).contains("guest:")) {
+//                        button.setEnabled(true);
+//                        Toast.makeText(MultiResult.this, Objects.requireNonNull(snapshot.getValue(String.class)).replace("guest:", ""), Toast.LENGTH_SHORT).show();
+//                    }
+//                } else {
+//                    if (Objects.requireNonNull(snapshot.getValue(String.class)).contains("host:")) {
+//                        button.setEnabled(true);
+//                        Toast.makeText(MultiResult.this, Objects.requireNonNull(snapshot.getValue(String.class)).replace("host:", ""), Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                messageRef.setValue(message);
+//            }
+//        });
+//    }
 }

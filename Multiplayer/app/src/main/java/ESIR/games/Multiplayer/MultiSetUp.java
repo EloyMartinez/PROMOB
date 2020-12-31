@@ -40,7 +40,7 @@ public class MultiSetUp extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
 
         SharedPreferences preferences = getSharedPreferences("PREFS", 0);
-        //preferences.edit().remove("playerName").apply(); // On enlève le nom de l'utilisateur de la memoire de l'apareil
+        preferences.edit().remove("playerName").apply(); // On enlève le nom de l'utilisateur de la memoire de l'apareil
 
         playerName = preferences.getString("playerName", "");
         if (!playerName.equals("")) {
