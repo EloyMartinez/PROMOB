@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "836067824491",
+    "project_id": "multiplayer-4db59",
+    "storage_bucket": "multiplayer-4db59.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836067824491:android:3c6a71317cd80c8ef3b22e",
+        "android_client_info": {
+          "package_name": "ESIR.games"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836067824491-t8mlcio9evha6jais0h78g3plefmpfuv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQJv2uIV8lTu6LCeVTIk7wngm0IndAxjY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836067824491-t8mlcio9evha6jais0h78g3plefmpfuv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

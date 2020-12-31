@@ -1,4 +1,4 @@
-package com.example.poke;
+package ESIR.games.Multiplayer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +16,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
 
-public class MainActivity3 extends AppCompatActivity {
+import ESIR.games.R;
+
+public class MultiResult extends AppCompatActivity {
 
     Button button;
 
@@ -31,7 +33,7 @@ public class MainActivity3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_multi_result);
 
         button = findViewById(R.id.button);
         button.setEnabled(false);
@@ -72,12 +74,12 @@ public class MainActivity3 extends AppCompatActivity {
                 if (role.equals("host")) {
                     if (Objects.requireNonNull(snapshot.getValue(String.class)).contains("guest:")) {
                         button.setEnabled(true);
-                        Toast.makeText(MainActivity3.this, Objects.requireNonNull(snapshot.getValue(String.class)).replace("guest:", ""), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MultiResult.this, Objects.requireNonNull(snapshot.getValue(String.class)).replace("guest:", ""), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     if (Objects.requireNonNull(snapshot.getValue(String.class)).contains("host:")) {
                         button.setEnabled(true);
-                        Toast.makeText(MainActivity3.this, Objects.requireNonNull(snapshot.getValue(String.class)).replace("host:", ""), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MultiResult.this, Objects.requireNonNull(snapshot.getValue(String.class)).replace("host:", ""), Toast.LENGTH_SHORT).show();
                     }
                 }
             }

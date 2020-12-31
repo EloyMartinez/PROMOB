@@ -1,4 +1,4 @@
-package com.example.poke;
+package ESIR.games.Multiplayer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +16,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class MainActivity extends AppCompatActivity {
+import ESIR.games.R;
+
+
+public class MultiSetUp extends AppCompatActivity {
 
     EditText editText;
     Button button;
@@ -29,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_multi_set_up);
 
         editText = findViewById(R.id.editText);
         button = findViewById(R.id.button);
@@ -70,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     editor.putString("playerName", playerName);
                     editor.apply();
 
-                    startActivity(new Intent(getApplicationContext(), MainActivity2.class));
+                    startActivity(new Intent(getApplicationContext(), MultiRooms.class));
                     finish();
                 }
             }
@@ -79,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
                 button.setText(R.string.log_in);
                 button.setEnabled(true);
-                Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MultiSetUp.this, "Error", Toast.LENGTH_SHORT).show();
             }
         });
     }

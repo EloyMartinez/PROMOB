@@ -1,4 +1,4 @@
-package com.example.poke;
+package ESIR.games.Multiplayer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity2 extends AppCompatActivity {
+import ESIR.games.R;
+
+public class MultiRooms extends AppCompatActivity {
 
     ListView listView;
     Button button;
@@ -37,7 +39,7 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_multi_rooms);
 
         database = FirebaseDatabase.getInstance();
 
@@ -72,14 +74,14 @@ public class MainActivity2 extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 button.setEnabled(true);
                 button.setText(R.string.create_group);
-                Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
+                Intent intent = new Intent(getApplicationContext(), MultiResult.class);
                 intent.putExtra("roomName", roomName);
                 startActivity(intent);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(MainActivity2.this, "Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MultiRooms.this, "Error", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -93,7 +95,7 @@ public class MainActivity2 extends AppCompatActivity {
                 Iterable<DataSnapshot> rooms = snapshot.getChildren();
                 for (DataSnapshot snapshots : rooms) {
                     roomsList.add(snapshots.getKey());
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity2.this, android.R.layout.simple_list_item_1, roomsList);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(MultiRooms.this, android.R.layout.simple_list_item_1, roomsList);
                     listView.setAdapter(adapter);
                 }
             }

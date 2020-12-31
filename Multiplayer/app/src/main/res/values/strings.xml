@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Games</string>
+    <string name="send">Envoyer</string>
+    <string name="replay">Rejouer</string>
+    <string name="play">Jouer</string>
+    <string name="win1">Joueur 1 a gagné !</string>
+    <string name="win2">Joueur 2 a gagné !</string>
+    <string name="player1">Joueur 1 :</string>
+    <string name="player2">Joueur 2 :</string>
+    <string name="reset">Recommencer</string>
+    <string name="player1Win">Joueur 1 a gagné !</string>
+    <string name="player2Win">Joueur 2 a gagné !</string>
+    <string name="go">Go !</string>
+    <string name="reshuffle">Reshuffle</string>
+    <string name="_0_5">0/5</string>
+    <string name="animals_in_english">ANIMALS!\n(in english)</string>
+    <string name="spell_an_animal">Spell an animal!</string>
+    <string name="game_over">GAME OVER</string>
+    <string name="next_game">Jeu suivant</string>
+    <string name="end">Aller aux résultats finaux</string>
+    <string name="start">START</string>
+    <string name="quizz_start_message">We are going to give you a set of letters, within these letters lies an answer. Good luck!</string>
+    <string name="_10_points">10 points</string>
+    <string name="_n100_points">-100 points</string>
+    <string name="_100_points">100 points</string>
+    <string name="_">_</string>
+    <string name="title_activity_set_up">setUp</string>
+    <string name="create_group">CREATE GROUPE</string>
+    <string name="logging_in">LOGGING IN</string>
+    <string name="log_in">LOG IN</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+</resources>
