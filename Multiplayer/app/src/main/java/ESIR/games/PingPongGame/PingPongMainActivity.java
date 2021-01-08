@@ -37,6 +37,9 @@ public class PingPongMainActivity extends AppCompatActivity implements View.OnCl
     // Positions
     private double box1Y, box2Y;
 
+    // Pour IA
+    private static boolean follow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +57,8 @@ public class PingPongMainActivity extends AppCompatActivity implements View.OnCl
         startBtn = findViewById(R.id.startBtn);
 
         ball = new Ball(this, getIntent());
+
+        follow = true;
 
         startBtn.setOnClickListener(this);
     }
@@ -96,6 +101,21 @@ public class PingPongMainActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
+
+    public static void IA() {
+        double random = Math.random() * 100000;
+        System.out.println(random);
+        if (random < 10) {
+            follow = false;
+        }
+
+        double boxHeight = box2.getHeight();
+        float ballPosition = ball.getBallY();
+
+        if ((ballPosition + boxHeight/2) <= frame.getHeight() && follow) {
+            box2.setY(Math.round(ballPosition - boxHeight / 2));
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")

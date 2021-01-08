@@ -112,6 +112,8 @@ public class Ball extends View {
         goal();
 
         endGame();
+
+        PingPongMainActivity.IA();
     }
 
     public void touchBoxes() { // Faire avec un boolean pour être utilisé dans goal
@@ -192,6 +194,10 @@ public class Ball extends View {
 
     public void setBallY(float yPosition) {
         ballY = yPosition;
+    }
+
+    public float getBallY () {
+        return ballY;
     }
 
 }
