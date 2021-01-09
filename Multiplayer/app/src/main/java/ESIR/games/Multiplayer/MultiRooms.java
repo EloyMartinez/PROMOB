@@ -20,7 +20,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import ESIR.games.FinalActivity;
 import ESIR.games.MainActivity;
 import ESIR.games.R;
 
@@ -28,6 +27,7 @@ public class MultiRooms extends AppCompatActivity {
 
     ListView listView;
     Button button;
+    ArrayAdapter arrayAdapter;
 
     List<String> roomsList;
 
@@ -53,6 +53,9 @@ public class MultiRooms extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         button = findViewById(R.id.button);
         roomsList = new ArrayList<>();
+        arrayAdapter = new ArrayAdapter<>(this, R.layout.row, roomsList);
+        listView.setAdapter(arrayAdapter);
+
         button.setOnClickListener(v -> {
             button.setEnabled(false);
             roomName = playerName;

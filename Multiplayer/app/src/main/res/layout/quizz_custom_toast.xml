@@ -16,8 +16,6 @@
         android:background="@drawable/but"
         tools:ignore="UselessParent">
 
-
-
         <TextView
             android:id="@+id/text"
             android:textSize="20sp"
@@ -25,9 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            android:textColor="@color/colorPrimary" />
-
-
+            android:textColor="@color/colorBlue" />
 
     </LinearLayout>
 
