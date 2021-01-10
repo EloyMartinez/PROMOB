@@ -27,7 +27,6 @@ public class MultiRooms extends AppCompatActivity {
 
     ListView listView;
     Button button;
-    ArrayAdapter arrayAdapter;
 
     List<String> roomsList;
 
@@ -53,8 +52,6 @@ public class MultiRooms extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         button = findViewById(R.id.button);
         roomsList = new ArrayList<>();
-        arrayAdapter = new ArrayAdapter<>(this, R.layout.row, roomsList);
-        listView.setAdapter(arrayAdapter);
 
         button.setOnClickListener(v -> {
             button.setEnabled(false);

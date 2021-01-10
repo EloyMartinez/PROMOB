@@ -105,7 +105,6 @@ public class PingPongMainActivity extends AppCompatActivity implements View.OnCl
 
     public static void IA() {
         double random = Math.random() * 100000;
-        System.out.println(random);
         if (random < 10) {
             follow = false;
         }
@@ -113,7 +112,8 @@ public class PingPongMainActivity extends AppCompatActivity implements View.OnCl
         double boxHeight = box2.getHeight();
         float ballPosition = ball.getBallY();
 
-        if ((ballPosition + boxHeight/2) <= frame.getHeight() && follow) {
+        if ((ballPosition + boxHeight / 2) <= frame.getHeight() &&
+                (ballPosition - boxHeight / 2) >= 0 && follow) {
             box2.setY(Math.round(ballPosition - boxHeight / 2));
         }
     }
