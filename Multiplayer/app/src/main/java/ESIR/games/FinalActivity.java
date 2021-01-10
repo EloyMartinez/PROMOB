@@ -47,7 +47,7 @@ public class FinalActivity extends AppCompatActivity {
         player1 = findViewById(R.id.player1);
         player2 = findViewById(R.id.player2);
         restart = findViewById(R.id.restart);
-        restart.setVisibility(restart.INVISIBLE);
+        //restart.setVisibility(restart.INVISIBLE);
 
 
         SharedPreferences preferences = getSharedPreferences("PREFS", 0);
@@ -102,10 +102,6 @@ public class FinalActivity extends AppCompatActivity {
                         ring.start();
                     }
                     restart.setVisibility(restart.VISIBLE);
-                    SharedPreferences.Editor editor = preferences.edit();
-                    editor.putString("pastRoomName", roomName);
-                    String test = preferences.getString("pastRoomName","");
-                    System.out.println("yo this is the beggining " +test);
 
 
                 }
@@ -134,7 +130,17 @@ public class FinalActivity extends AppCompatActivity {
 
         oppname.addValueEventListener(b);
 
+
+
+
+
         restart.setOnClickListener(v -> {
+            oppRef.removeEventListener(a);
+            oppname.removeEventListener(b);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("pastRoomName", roomName);
+            editor.commit();
+
 
             Intent intent = new Intent(this, init.class);
             startActivity(intent);

@@ -34,15 +34,7 @@ public class init extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences("PREFS", 0);
 
-        delete = preferences.getString("pastRoomName", "");
-        System.out.println("HERE WE ARE "+delete);
-        if (!delete.equals("")) {
-            FirebaseDatabase database;
-            database = FirebaseDatabase.getInstance();
-            DatabaseReference roomref = database.getReference("rooms/" + delete);
-            roomref.removeValue();
-           // preferences.edit().remove("delete").apply(); // On enlève le nom de l'utilisateur de la memoire de l'apareil
-        }
+
 
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/FredokaOneRegular.ttf");
         text.setTypeface(typeface);
