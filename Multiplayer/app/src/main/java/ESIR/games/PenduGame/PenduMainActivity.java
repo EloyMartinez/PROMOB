@@ -47,12 +47,12 @@ public class PenduMainActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pendu_main);
 
-        container = (LinearLayout) findViewById(R.id.word_container);
-        Button btn_send = (Button) findViewById(R.id.btn_send);
-        et_letter = (EditText) findViewById(R.id.et_letter);
-        image = (ImageView) findViewById(R.id.iv_pendu);
-        letters_taping = (TextView) findViewById(R.id.tv_letters_taping);
-        timerTextView = (TextView) findViewById(R.id.timer);
+        container = findViewById(R.id.word_container);
+        Button btn_send = findViewById(R.id.btn_send);
+        et_letter = findViewById(R.id.et_letter);
+        image = findViewById(R.id.iv_pendu);
+        letters_taping = findViewById(R.id.tv_letters_taping);
+        timerTextView = findViewById(R.id.timer);
 
         startTime = System.currentTimeMillis();
         timerHandler.postDelayed(timerRunnable, 0);
