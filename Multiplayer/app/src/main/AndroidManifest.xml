@@ -35,6 +35,7 @@
         <activity android:name=".TicTacToeGame.TicTacToeMainActivity" />
         <activity android:name=".FinalActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".TrainingActivity" />
         <activity android:name=".Multiplayer.MultiResult"/>
     </application>
 

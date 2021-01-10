@@ -64,23 +64,23 @@ public class FinalActivity extends AppCompatActivity {
         oppRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                System.out.println("TEST");
-                if(snapshot.exists()) {
-                    System.out.println("from snapshot"+snapshot.getValue());
+                if (snapshot.exists()) {
+                    System.out.println("from snapshot" + snapshot.getValue());
                     scoreopp = snapshot.getValue().toString();
-                    System.out.println("inside if" +scoreopp);
+                    System.out.println("inside if" + scoreopp);
                     score2.setText(scoreopp);
                 }
-
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
-            }});
+            }
+        });
 
 
         messageRef.setValue(Integer.toString(getIntent().getIntExtra("score1", 0)));
 
-        score2.setText("waiting for oponent");
+        score2.setText("Waiting for opponent");
         score1.setText(Integer.toString(getIntent().getIntExtra("score1", 0)));
     }
 }

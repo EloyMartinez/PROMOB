@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btnBall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/invaders"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/btnPendu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:text="@string/pendu"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/btnPingPong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="240dp"
+        android:text="@string/ping_pong"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/btnQuizz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="340dp"
+        android:text="@string/quizz"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/btnTicTacToe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="440dp"
+        android:text="@string/tic_tac_toe"
+        android:textSize="30sp" />
+
+</RelativeLayout>
