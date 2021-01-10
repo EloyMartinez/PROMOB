@@ -24,7 +24,7 @@ public class FinalActivity extends AppCompatActivity {
     String roomName = "";
     String role = "";
     String comp = "";
-    String scoreOpp = "";
+    String scoreopp = "";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -63,28 +63,24 @@ public class FinalActivity extends AppCompatActivity {
 
         oppRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    player1.setText(playerName);
-                    player2.setText(roomName);
-
-                    scoreOpp = snapshot.getValue().toString();
-                    score2.setText(scoreOpp);
-
-                    int score2Value = Integer.getInteger(scoreOpp);
-                    if (score1Value > score2Value)
-                        winner.setText(playerName + " à gagné !");
-                    else
-                        winner.setText(roomName + " à gagné !");
+            public void onDataChange(DataSnapshot snapshot) {
+                System.out.println("TEST");
+                if(snapshot.exists()) {
+                    System.out.println("from snapshot"+snapshot.getValue());
+                    scoreopp = snapshot.getValue().toString();
+                    System.out.println("inside if" +scoreopp);
+                    score2.setText(scoreopp);
                 }
-            }
 
+            }
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
+            public void onCancelled(DatabaseError databaseError) {
+            }});
 
-        score2.setText("Waiting for opponent...");
-        score1.setText(Integer.toString(score1Value));
+
+        messageRef.setValue(Integer.toString(getIntent().getIntExtra("score1", 0)));
+
+        score2.setText("waiting for oponent");
+        score1.setText(Integer.toString(getIntent().getIntExtra("score1", 0)));
     }
 }

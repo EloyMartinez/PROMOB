@@ -21,7 +21,6 @@ public class BallResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ball_result);
 
         TextView scoreLabel = findViewById(R.id.scoreLabel);
-        TextView highScoreLabel = findViewById(R.id.highScoreLabel);
         int score = getIntent().getIntExtra("SCORE", 0);
         scoreLabel.setText(score + "");
 
@@ -31,17 +30,7 @@ public class BallResultActivity extends AppCompatActivity {
 
         final Button button = findViewById(R.id.button_id);
         button.setOnClickListener(v -> endGame());
-
-        if (score > highScore) {
-            //update Highscore
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt("HIGH_SCORE", score);
-            editor.apply();
-
-            highScoreLabel.setText("High score : " + score);
-        } else {
-            highScoreLabel.setText("High Score : " + highScore);
-        }
+        
     }
 
     private void endGame() {
