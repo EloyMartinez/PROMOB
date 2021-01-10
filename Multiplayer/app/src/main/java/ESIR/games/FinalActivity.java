@@ -1,8 +1,11 @@
 package ESIR.games;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,10 +20,12 @@ import com.google.firebase.database.ValueEventListener;
 public class FinalActivity extends AppCompatActivity {
 
     TextView score1, score2, winner, player1, player2;
+    Button restart;
     FirebaseDatabase database;
     DatabaseReference messageRef;
     DatabaseReference oppRef;
     DatabaseReference oppname;
+    DatabaseReference roomref;
     String playerName = "";
     String roomName = "";
     String role = "";
@@ -41,6 +46,9 @@ public class FinalActivity extends AppCompatActivity {
         winner = findViewById(R.id.winner);
         player1 = findViewById(R.id.player1);
         player2 = findViewById(R.id.player2);
+        restart = findViewById(R.id.restart);
+        restart.setVisibility(restart.INVISIBLE);
+
 
         SharedPreferences preferences = getSharedPreferences("PREFS", 0);
         roomName = preferences.getString("roomName", "");
@@ -49,6 +57,9 @@ public class FinalActivity extends AppCompatActivity {
 
         preferences.edit().remove("roomName").apply();
         score = Integer.toString(getIntent().getIntExtra("score1", 0));
+
+
+
 
         if (roomName.equals(playerName)) {
             role = "player1";
@@ -63,11 +74,12 @@ public class FinalActivity extends AppCompatActivity {
         messageRef = database.getReference("rooms/" + roomName + "/" + role + "score");
         oppRef = database.getReference("rooms/" + roomName + "/" + comp + "score");
         oppname =  database.getReference("rooms/" + roomName + "/" + comp);
+        roomref =  database.getReference("rooms/" + roomName);
 
         int score1Value = getIntent().getIntExtra("score1", 0);
         messageRef.setValue(Integer.toString(score1Value));
 
-        oppRef.addValueEventListener(new ValueEventListener() {
+        ValueEventListener a =new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 System.out.println("TEST");
@@ -86,9 +98,14 @@ public class FinalActivity extends AppCompatActivity {
 
                     }else{
                         winner.setText("YOU WON!");
-
-
+                        MediaPlayer ring= MediaPlayer.create(FinalActivity.this,R.raw.musiquevictor);
+                        ring.start();
                     }
+                    restart.setVisibility(restart.VISIBLE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("pastRoomName", roomName);
+                    String test = preferences.getString("pastRoomName","");
+                    System.out.println("yo this is the beggining " +test);
 
 
                 }
@@ -96,9 +113,11 @@ public class FinalActivity extends AppCompatActivity {
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-            }});
+            }};
 
-        oppname.addValueEventListener(new ValueEventListener() {
+        oppRef.addValueEventListener(a);
+
+        ValueEventListener b = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 System.out.println("TEST");
@@ -111,9 +130,15 @@ public class FinalActivity extends AppCompatActivity {
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
-            }});
+            }};
 
+        oppname.addValueEventListener(b);
 
+        restart.setOnClickListener(v -> {
+
+            Intent intent = new Intent(this, init.class);
+            startActivity(intent);
+        });
 
         messageRef.setValue(Integer.toString(getIntent().getIntExtra("score1", 0)));
 
