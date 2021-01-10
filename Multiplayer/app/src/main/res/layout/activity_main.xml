@@ -1,40 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <Button
         android:id="@+id/btnBall"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:text="Ball"
-        android:layout_height="60dp"/>
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"/>
 
     <Button
         android:id="@+id/btnPendu"
-        android:layout_width="match_parent"
-        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
         android:text="Pendu"
-        android:layout_height="60dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"/>
 
     <Button
         android:id="@+id/btnPingPong"
-        android:layout_width="match_parent"
-        android:layout_marginTop="200dp"
+        android:layout_width="wrap_content"
         android:text="PingPong"
-        android:layout_height="60dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"/>
 
     <Button
         android:id="@+id/btnQuizz"
-        android:layout_width="match_parent"
-        android:layout_marginTop="300dp"
+        android:layout_width="wrap_content"
         android:text="Quizz"
-        android:layout_height="60dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"/>
 
     <Button
         android:id="@+id/btnTicTacToe"
-        android:layout_width="match_parent"
-        android:layout_marginTop="400dp"
+        android:layout_width="wrap_content"
         android:text="TicTacToe"
-        android:layout_height="60dp"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"/>
+
+    </LinearLayout>
 
 </RelativeLayout>
