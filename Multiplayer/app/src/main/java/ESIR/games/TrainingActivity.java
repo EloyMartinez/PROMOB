@@ -26,7 +26,6 @@ public class TrainingActivity extends AppCompatActivity {
         Button btnTicTacToe = findViewById(R.id.btnTicTacToe);
 
         Intent intent = new Intent();
-        intent.putExtra("mode", getIntent().getStringExtra("mode"));
 
         btnBall.setOnClickListener(v -> {
             intent.setClass(this, BallStarterActivity.class);

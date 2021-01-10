@@ -13,7 +13,7 @@
         <Button
             android:id="@+id/btnBall"
             android:layout_width="wrap_content"
-            android:text="Ball"
+            android:text="@string/invaders"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginBottom="30dp"/>
@@ -21,28 +21,28 @@
         <Button
             android:id="@+id/btnPendu"
             android:layout_width="wrap_content"
-            android:text="Pendu"
+            android:text="@string/pendu"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"/>
 
         <Button
             android:id="@+id/btnPingPong"
             android:layout_width="wrap_content"
-            android:text="PingPong"
+            android:text="@string/ping_pong"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"/>
 
         <Button
             android:id="@+id/btnQuizz"
             android:layout_width="wrap_content"
-            android:text="Quizz"
+            android:text="@string/quizz"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"/>
 
         <Button
             android:id="@+id/btnTicTacToe"
             android:layout_width="wrap_content"
-            android:text="TicTacToe"
+            android:text="@string/tic_tac_toe"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"/>
 

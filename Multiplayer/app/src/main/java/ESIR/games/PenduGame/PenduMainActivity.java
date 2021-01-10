@@ -2,8 +2,11 @@ package ESIR.games.PenduGame;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import ESIR.games.InitActivity;
 import ESIR.games.R;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.io.BufferedReader;
@@ -52,6 +56,21 @@ public class PenduMainActivity extends AppCompatActivity implements View.OnClick
 
         startTime = System.currentTimeMillis();
         timerHandler.postDelayed(timerRunnable, 0);
+
+        RelativeLayout layout = findViewById(R.id.layout);
+
+        Button menu = new Button(this);
+        menu.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 100));
+        menu.setText(R.string.menu);
+        menu.setTextColor(0xFFFFFFFF);
+        menu.setTop(100);
+        menu.setBackgroundColor(0xFF6200EE);
+        menu.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), InitActivity.class);
+            startActivity(intent);
+        });
+
+        layout.addView(menu);
 
         initGame();
 

@@ -13,5 +13,4 @@
         android:text="@string/go"
         android:textSize="30sp" />
 
-
 </RelativeLayout>

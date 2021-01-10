@@ -17,7 +17,7 @@
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
-        <activity android:name=".init">
+        <activity android:name=".InitActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

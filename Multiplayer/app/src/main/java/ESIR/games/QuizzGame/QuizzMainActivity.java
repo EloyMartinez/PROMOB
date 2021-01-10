@@ -21,6 +21,7 @@ import java.util.Random;
 
 import ESIR.games.BallGame.BallStarterActivity;
 import ESIR.games.FinalActivity;
+import ESIR.games.InitActivity;
 import ESIR.games.R;
 
 public class QuizzMainActivity extends AppCompatActivity {
@@ -47,7 +48,7 @@ public class QuizzMainActivity extends AppCompatActivity {
     private int minutes;
 
     TextView textScreen, textQuestion, textTitle, timerTextView;
-    Button delButton;
+    Button delButton, menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,7 @@ public class QuizzMainActivity extends AppCompatActivity {
         keys = keyset[counter];
         textAnswer = answerset[counter];
         timerTextView = (TextView) findViewById(R.id.timer);
+        menu = findViewById(R.id.menu);
 
         keys = shuffleArray(keys);
 
@@ -70,6 +72,11 @@ public class QuizzMainActivity extends AppCompatActivity {
                 addView(linearLayout2, key, editText);
             }
         }
+
+        menu.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), InitActivity.class);
+            startActivity(intent);
+        });
 
         startTime = System.currentTimeMillis();
         timerHandler.postDelayed(timerRunnable, 0);

@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
@@ -136,7 +135,7 @@ public class FinalActivity extends AppCompatActivity {
 
         restart.setOnClickListener(v -> {
 
-            Intent intent = new Intent(this, init.class);
+            Intent intent = new Intent(this, InitActivity.class);
             startActivity(intent);
         });
 

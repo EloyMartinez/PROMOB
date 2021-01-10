@@ -38,4 +38,5 @@
     <string name="quizz">Quizz</string>
     <string name="tic_tac_toe">Tic Tac Toe</string>
     <string name="menu">Menu</string>
+    <string name="welcome">Bienvenue dans notre Jeu ! \n Êtes-vous prêt ?</string>
 </resources>

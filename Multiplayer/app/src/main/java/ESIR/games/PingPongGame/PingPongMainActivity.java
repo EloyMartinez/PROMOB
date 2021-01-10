@@ -2,9 +2,11 @@ package ESIR.games.PingPongGame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import ESIR.games.InitActivity;
 import ESIR.games.R;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -16,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 @SuppressLint("StaticFieldLeak")
@@ -61,6 +64,21 @@ public class PingPongMainActivity extends AppCompatActivity implements View.OnCl
         follow = true;
 
         startBtn.setOnClickListener(this);
+
+        LinearLayout layout = findViewById(R.id.layout);
+
+        Button menu = new Button(this);
+        menu.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 100));
+        menu.setText(R.string.menu);
+        menu.setTextColor(0xFFFFFFFF);
+        menu.setTop(100);
+        menu.setBackgroundColor(0xFF6200EE);
+        menu.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), InitActivity.class);
+            startActivity(intent);
+        });
+
+        layout.addView(menu);
     }
 
     @Override

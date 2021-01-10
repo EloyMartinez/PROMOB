@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import ESIR.games.MainActivity;
 import ESIR.games.PingPongGame.PingPongMainActivity;
 import ESIR.games.R;
+import ESIR.games.InitActivity;
 
 public class BallResultActivity extends AppCompatActivity {
 
@@ -29,18 +29,17 @@ public class BallResultActivity extends AppCompatActivity {
         LinearLayout layout = findViewById(R.id.layout);
 
         Button menu = new Button(this);
-        menu.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        menu.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 100));
         menu.setText(R.string.menu);
         menu.setTextColor(0xFFFFFFFF);
         menu.setTop(100);
+        menu.setBackgroundColor(0xFF6200EE);
         menu.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(), InitActivity.class);
             startActivity(intent);
         });
 
-        String mode = getIntent().getStringExtra("mode");
-        if(mode.equals("training"))
-            layout.addView(menu);
+        layout.addView(menu);
     }
 
     private void endGame() {
