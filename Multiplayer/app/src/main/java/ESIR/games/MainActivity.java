@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         goBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, QuizzStarterActivity.class);
+            intent.putExtra("mode", "multi");
             intent.putExtra("score1", score1);
             intent.putExtra("score2", score2);
             startActivity(intent);
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         trainingBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, TrainingActivity.class);
+            intent.putExtra("mode", "training");
             startActivity(intent);
         });
 

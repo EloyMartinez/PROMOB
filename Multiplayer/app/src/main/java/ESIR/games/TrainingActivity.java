@@ -25,24 +25,27 @@ public class TrainingActivity extends AppCompatActivity {
         Button btnQuizz = findViewById(R.id.btnQuizz);
         Button btnTicTacToe = findViewById(R.id.btnTicTacToe);
 
+        Intent intent = new Intent();
+        intent.putExtra("mode", getIntent().getStringExtra("mode"));
+
         btnBall.setOnClickListener(v -> {
-            Intent intent = new Intent(this, BallStarterActivity.class);
+            intent.setClass(this, BallStarterActivity.class);
             startActivity(intent);
         });
         btnPendu.setOnClickListener(v -> {
-            Intent intent = new Intent(this, PenduMainActivity.class);
+            intent.setClass(this, PenduMainActivity.class);
             startActivity(intent);
         });
         btnPingPong.setOnClickListener(v -> {
-            Intent intent = new Intent(this, PingPongMainActivity.class);
+            intent.setClass(this, PingPongMainActivity.class);
             startActivity(intent);
         });
         btnQuizz.setOnClickListener(v -> {
-            Intent intent = new Intent(this, QuizzStarterActivity.class);
+            intent.setClass(this, QuizzStarterActivity.class);
             startActivity(intent);
         });
         btnTicTacToe.setOnClickListener(v -> {
-            Intent intent = new Intent(this, TicTacToeMainActivity.class);
+            intent.setClass(this, TicTacToeMainActivity.class);
             startActivity(intent);
         });
     }

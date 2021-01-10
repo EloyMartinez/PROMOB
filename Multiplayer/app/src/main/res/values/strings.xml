@@ -37,4 +37,5 @@
     <string name="ping_pong">Ping Pong</string>
     <string name="quizz">Quizz</string>
     <string name="tic_tac_toe">Tic Tac Toe</string>
+    <string name="menu">Menu</string>
 </resources>

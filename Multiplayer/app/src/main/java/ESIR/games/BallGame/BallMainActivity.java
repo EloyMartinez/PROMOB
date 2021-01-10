@@ -212,7 +212,7 @@ public class BallMainActivity extends AppCompatActivity {
             int score1 = getIntent().getIntExtra("score1", 0) + score;
             int score2 = getIntent().getIntExtra("score2", 0);
             Intent intent = new Intent(this, BallResultActivity.class);
-            System.out.println(score1 + " - " + score2);
+            intent.putExtra("mode", getIntent().getStringExtra("mode"));
             intent.putExtra("SCORE", score);
             intent.putExtra("score1", score1);
             intent.putExtra("score2", score2);

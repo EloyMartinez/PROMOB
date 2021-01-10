@@ -22,7 +22,7 @@ public class BallStarterActivity extends AppCompatActivity {
 
     public void start() {
         Intent intent = new Intent(getApplicationContext(), BallMainActivity.class);
-        System.out.println(getIntent().getIntExtra("score1", 0) + " - " + getIntent().getIntExtra("score2", 0));
+        intent.putExtra("mode", getIntent().getStringExtra("mode"));
         intent.putExtra("score1", getIntent().getIntExtra("score1", 0));
         intent.putExtra("score2", getIntent().getIntExtra("score2", 0));
         startActivity(intent);
