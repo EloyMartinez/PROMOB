@@ -20,11 +20,16 @@ public class FinalActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference messageRef;
     DatabaseReference oppRef;
+    DatabaseReference oppname;
     String playerName = "";
     String roomName = "";
     String role = "";
     String comp = "";
     String scoreopp = "";
+    String nameopp = "";
+    String score = "";
+    int sopp ;
+    int sc;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -42,8 +47,8 @@ public class FinalActivity extends AppCompatActivity {
 
         playerName = preferences.getString("playerName", "");
 
-        score1.setText("hello");
         preferences.edit().remove("roomName").apply();
+        score = Integer.toString(getIntent().getIntExtra("score1", 0));
 
         if (roomName.equals(playerName)) {
             role = "player1";
@@ -57,6 +62,7 @@ public class FinalActivity extends AppCompatActivity {
 
         messageRef = database.getReference("rooms/" + roomName + "/" + role + "score");
         oppRef = database.getReference("rooms/" + roomName + "/" + comp + "score");
+        oppname =  database.getReference("rooms/" + roomName + "/" + comp);
 
         int score1Value = getIntent().getIntExtra("score1", 0);
         messageRef.setValue(Integer.toString(score1Value));
@@ -70,6 +76,36 @@ public class FinalActivity extends AppCompatActivity {
                     scoreopp = snapshot.getValue().toString();
                     System.out.println("inside if" +scoreopp);
                     score2.setText(scoreopp);
+                    sc = Integer.parseInt(score);
+                    sopp=Integer.parseInt(scoreopp);
+                    if(sc<sopp){
+                        winner.setText("YOU LOST");
+
+                    }else if (sc ==sopp){
+                        winner.setText("ITS A TIE!");
+
+                    }else{
+                        winner.setText("YOU WON!");
+
+
+                    }
+
+
+                }
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }});
+
+        oppname.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                System.out.println("TEST");
+                if(snapshot.exists()) {
+                    System.out.println("from snapshot"+snapshot.getValue());
+                    nameopp = snapshot.getValue().toString();
+                    player2.setText(nameopp);
                 }
 
             }
@@ -78,9 +114,11 @@ public class FinalActivity extends AppCompatActivity {
             }});
 
 
+
         messageRef.setValue(Integer.toString(getIntent().getIntExtra("score1", 0)));
 
-        score2.setText("waiting for oponent");
-        score1.setText(Integer.toString(getIntent().getIntExtra("score1", 0)));
+        score2.setText("Waiting for Oponent");
+        player1.setText(playerName);
+        score1.setText(score);
     }
 }

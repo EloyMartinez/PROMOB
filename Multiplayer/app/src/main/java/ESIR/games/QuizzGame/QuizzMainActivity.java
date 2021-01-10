@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Random;
 
 import ESIR.games.BallGame.BallStarterActivity;
+import ESIR.games.FinalActivity;
 import ESIR.games.R;
 
 public class QuizzMainActivity extends AppCompatActivity {
@@ -285,7 +286,7 @@ public class QuizzMainActivity extends AppCompatActivity {
                 break;
         }
 
-        Intent intent = new Intent(getApplicationContext(), BallStarterActivity.class);
+        Intent intent = new Intent(getApplicationContext(), FinalActivity.class);
         System.out.println(score1 + " - " + score2);
         intent.putExtra("score1", score1);
         intent.putExtra("score2", score2);

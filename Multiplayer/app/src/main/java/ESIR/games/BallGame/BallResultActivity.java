@@ -30,7 +30,7 @@ public class BallResultActivity extends AppCompatActivity {
 
         final Button button = findViewById(R.id.button_id);
         button.setOnClickListener(v -> endGame());
-        
+
     }
 
     private void endGame() {

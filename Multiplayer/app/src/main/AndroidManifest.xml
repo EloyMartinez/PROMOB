@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,19 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Games">
-        <activity android:name=".Multiplayer.MultiRooms" />
+
 
         <meta-data
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
-        <activity android:name=".Multiplayer.MultiSetUp">
+        <activity android:name=".init">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Multiplayer.MultiSetUp"/>
+        <activity android:name=".Multiplayer.MultiRooms" />
         <activity android:name=".BallGame.BallStarterActivity" />
         <activity android:name=".BallGame.BallMainActivity" />
         <activity android:name=".BallGame.BallResultActivity" />
@@ -35,7 +36,7 @@
         <activity android:name=".TicTacToeGame.TicTacToeMainActivity" />
         <activity android:name=".FinalActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Multiplayer.MultiResult"/>
+        <activity android:name=".Multiplayer.MultiResult" />
     </application>
 
 </manifest>
