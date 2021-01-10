@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
         goBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, QuizzStarterActivity.class);
-            intent.putExtra("mode", "multi");
             intent.putExtra("score1", score1);
             intent.putExtra("score2", score2);
             startActivity(intent);

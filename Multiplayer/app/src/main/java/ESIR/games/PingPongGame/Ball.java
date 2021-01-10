@@ -143,11 +143,11 @@ public class Ball extends View {
     }
 
     public void endGame() {
-        if (score1 == 5 || score2 == 5) {
+        if (score1 == 1 || score2 == 1) {
             frame.removeView(this);
 
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            if (score1 == 5) {
+            if (score1 == 1) {
                 builder.setTitle(R.string.win1);
             } else {
                 builder.setTitle(R.string.win2);
