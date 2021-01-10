@@ -7,15 +7,29 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/scoreLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:textAlignment="center"
-        android:layout_gravity="center"
-        android:text="—"
-        tools:ignore="HardcodedText"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/scoreLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:layout_centerHorizontal="true"
+            android:text="—"
+            tools:ignore="HardcodedText"/>
+
+        <Button
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="15dp"
+            android:text="@string/menu" />
+
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/frame"

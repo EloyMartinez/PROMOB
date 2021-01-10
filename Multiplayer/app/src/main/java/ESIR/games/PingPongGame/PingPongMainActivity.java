@@ -65,20 +65,11 @@ public class PingPongMainActivity extends AppCompatActivity implements View.OnCl
 
         startBtn.setOnClickListener(this);
 
-        LinearLayout layout = findViewById(R.id.layout);
-
-        Button menu = new Button(this);
-        menu.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 100));
-        menu.setText(R.string.menu);
-        menu.setTextColor(0xFFFFFFFF);
-        menu.setTop(100);
-        menu.setBackgroundColor(0xFF6200EE);
+        Button menu = findViewById(R.id.menu);
         menu.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), InitActivity.class);
             startActivity(intent);
         });
-
-        layout.addView(menu);
     }
 
     @Override

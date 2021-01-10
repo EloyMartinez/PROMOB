@@ -2,8 +2,11 @@ package ESIR.games.TicTacToeGame;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import ESIR.games.InitActivity;
 import ESIR.games.R;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +43,12 @@ public class TicTacToeMainActivity extends AppCompatActivity implements View.OnC
 
         Button buttonReset = findViewById(R.id.resetButton);
         buttonReset.setOnClickListener(v -> resetGame());
+
+        Button menu = findViewById(R.id.menu);
+        menu.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), InitActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
