@@ -37,6 +37,7 @@
         <activity android:name=".FinalActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Multiplayer.MultiResult" />
+        <activity android:name=".TrainingActivity"/>
     </application>
 
 </manifest>

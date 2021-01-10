@@ -21,6 +21,12 @@ public class init extends AppCompatActivity {
         TextView text = findViewById(R.id.start);
         Button but = findViewById(R.id.button);
 
+        Button trainingBtn = findViewById(R.id.trainingBtn);
+        trainingBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, TrainingActivity.class);
+            startActivity(intent);
+        });
+
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/FredokaOneRegular.ttf");
         text.setTypeface(typeface);
         but.setTypeface(typeface);

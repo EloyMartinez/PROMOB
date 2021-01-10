@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         Button goBtn = findViewById(R.id.goBtn);
-        Button trainingBtn = findViewById(R.id.trainingBtn);
+
 
         goBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, QuizzStarterActivity.class);
@@ -27,10 +27,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        trainingBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(this, TrainingActivity.class);
-            startActivity(intent);
-        });
+
 
         score1 = 0;
         score2 = 0;

@@ -19,6 +19,7 @@
         android:gravity="center"
         android:text="Welcome to PROMOB GAMES \n
 Are you ready?"
+        android:layout_marginBottom="5dp"
         android:textColor="@color/white"></TextView>
 
     <Button
@@ -28,6 +29,16 @@ Are you ready?"
         android:text="START"
         >
 
+    </Button>
+
+    <Button
+        android:layout_marginTop="50dp"
+        android:id="@+id/trainingBtn"
+        android:textSize="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Training Mode"
+        >
     </Button>
 </LinearLayout>
 
