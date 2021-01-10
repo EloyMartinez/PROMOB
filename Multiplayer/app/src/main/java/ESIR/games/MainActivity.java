@@ -25,15 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences preferences = getSharedPreferences("PREFS", 0);
 
-       String delete = preferences.getString("pastRoomName", "");
-        System.out.println("HERE WE ARE "+delete);
-        if (!delete.equals("")) {
-            FirebaseDatabase database;
-            database = FirebaseDatabase.getInstance();
-            DatabaseReference roomref = database.getReference("rooms/" + delete);
-          //  roomref.removeValue();
-             preferences.edit().remove("delete").apply(); // On enlève le nom de l'utilisateur de la memoire de l'apareil
-        }
+
 
 
         goBtn.setOnClickListener(v -> {
