@@ -46,7 +46,7 @@ public class FinalActivity extends AppCompatActivity {
         player1 = findViewById(R.id.player1);
         player2 = findViewById(R.id.player2);
         restart = findViewById(R.id.restart);
-        //restart.setVisibility(restart.INVISIBLE);
+        restart.setVisibility(restart.INVISIBLE);
 
 
         SharedPreferences preferences = getSharedPreferences("PREFS", 0);
