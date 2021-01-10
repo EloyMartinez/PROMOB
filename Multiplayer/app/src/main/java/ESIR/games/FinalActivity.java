@@ -58,6 +58,9 @@ public class FinalActivity extends AppCompatActivity {
         messageRef = database.getReference("rooms/" + roomName + "/" + role + "score");
         oppRef = database.getReference("rooms/" + roomName + "/" + comp + "score");
 
+        player1.setText(playerName);
+        player2.setText(roomName);
+
         int score1Value = getIntent().getIntExtra("score1", 0);
         messageRef.setValue(Integer.toString(score1Value));
 
@@ -65,9 +68,6 @@ public class FinalActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    player1.setText(playerName);
-                    player2.setText(roomName);
-
                     scoreOpp = snapshot.getValue().toString();
                     score2.setText(scoreOpp);
 
