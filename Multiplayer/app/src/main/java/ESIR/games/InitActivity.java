@@ -21,7 +21,6 @@ public class InitActivity extends AppCompatActivity {
         Button trainingBtn = findViewById(R.id.trainingBtn);
         trainingBtn.setOnClickListener(v -> {
             Intent intent = new Intent(this, TrainingActivity.class);
-            intent.putExtra("mode", "training");
             startActivity(intent);
         });
 

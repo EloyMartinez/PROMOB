@@ -91,10 +91,8 @@ public class FinalActivity extends AppCompatActivity {
                     sopp=Integer.parseInt(scoreopp);
                     if(sc<sopp){
                         winner.setText("YOU LOST");
-
                     }else if (sc ==sopp){
                         winner.setText("ITS A TIE!");
-
                     }else{
                         winner.setText("YOU WON!");
                         MediaPlayer ring= MediaPlayer.create(FinalActivity.this,R.raw.musiquevictor);
@@ -147,7 +145,7 @@ public class FinalActivity extends AppCompatActivity {
 
         messageRef.setValue(Integer.toString(getIntent().getIntExtra("score1", 0)));
 
-        score2.setText("Waiting for Oponent");
+        score2.setText("Waiting for Opponent");
         player1.setText(playerName);
         score1.setText(score);
     }

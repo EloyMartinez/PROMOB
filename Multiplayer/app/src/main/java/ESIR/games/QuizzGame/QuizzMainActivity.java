@@ -293,7 +293,7 @@ public class QuizzMainActivity extends AppCompatActivity {
                 break;
         }
 
-        Intent intent = new Intent(getApplicationContext(), FinalActivity.class);
+        Intent intent = new Intent(getApplicationContext(), BallStarterActivity.class);
         System.out.println(score1 + " - " + score2);
         intent.putExtra("score1", score1);
         intent.putExtra("score2", score2);

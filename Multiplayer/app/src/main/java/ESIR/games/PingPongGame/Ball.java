@@ -14,7 +14,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import ESIR.games.FinalActivity;
-import ESIR.games.Multiplayer.MultiResult;
 import ESIR.games.R;
 
 @SuppressLint("ViewConstructor")
@@ -144,18 +143,18 @@ public class Ball extends View {
     }
 
     public void endGame() {
-        if (score1 == 1 || score2 == 1) {
+        if (score1 == 5 || score2 == 5) {
             frame.removeView(this);
 
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            if (score1 == 1) {
+            if (score1 == 5) {
                 builder.setTitle(R.string.win1);
             } else {
                 builder.setTitle(R.string.win2);
             }
 
             builder.setPositiveButton(R.string.end, (dialog, which) -> {
-                int score1 = intent.getIntExtra("score1", 0) + (Ball.score1 - Ball.score2) * 100;
+                int score1 = intent.getIntExtra("score1", 0) + (Ball.score1 - Ball.score2) * 200;
                 int score2 = intent.getIntExtra("score2", 0) + Ball.score2;
                 Intent intent1 = new Intent(context.getApplicationContext(), FinalActivity.class);
                 System.out.println(score1 + " - " + score2);
